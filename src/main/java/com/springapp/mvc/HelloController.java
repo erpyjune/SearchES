@@ -8,7 +8,6 @@ import search.SearchData;
 import search.SearchES;
 
 import javax.servlet.http.HttpServletRequest;
-import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
