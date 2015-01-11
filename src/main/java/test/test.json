@@ -1,0 +1,195 @@
+{
+  "took": 20,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "failed": 0
+  },
+  "hits": {
+    "total": 581,
+    "max_score": 1.016897,
+    "hits": [
+      {
+        "_index": "shop",
+        "_type": "okmall",
+        "_id": "7096",
+        "_score": 1.016897,
+        "_source": {
+          "dataid": "7096",
+          "product_name": "NIKE COMPOSURE SI (314968-100) (컴포우져)",
+          "brand_name": "NIKE",
+          "url": "http://www.okmall.com//product/view.html?no=40213&pID=20000565&UNI=F",
+          "thumb": "http://121.254.171.83/ProductImages/40000/img40213_middle6.JPG",
+          "org_price": 79000,
+          "sale_price": 47910,
+          "sale_per": null,
+          "cp": "okmall",
+          "keyword": "땡처리"
+        }
+      },
+      {
+        "_index": "shop",
+        "_type": "okmall",
+        "_id": "2294",
+        "_score": 1.001749,
+        "_source": {
+          "dataid": "2294",
+          "product_name": "NIKE COMPOSURE SI (314968-100) (컴포우져)",
+          "brand_name": "NIKE",
+          "url": "http://www.okmall.com//product/view.html?no=40213&pID=20000565&UNI=F",
+          "thumb": "http://121.254.171.83/ProductImages/40000/img40213_middle6.JPG",
+          "org_price": 79000,
+          "sale_price": 47910,
+          "sale_per": null,
+          "cp": "okmall",
+          "keyword": "땡처리"
+        }
+      },
+      {
+        "_index": "shop",
+        "_type": "okmall",
+        "_id": "2882",
+        "_score": 0.84741414,
+        "_source": {
+          "dataid": "2882",
+          "product_name": "NIKE FLEX EXPERIENCE(652846-002) (나이키 플렉스 익스피리언스)",
+          "brand_name": "NIKE",
+          "url": "http://www.okmall.com//product/view.html?no=92604&pID=20000542&UNI=M",
+          "thumb": "http://121.254.171.83/ProductImages/92500/img92604_middle6.JPG",
+          "org_price": 99000,
+          "sale_price": 63400,
+          "sale_per": null,
+          "cp": "okmall",
+          "keyword": "땡처리"
+        }
+      },
+      {
+        "_index": "shop",
+        "_type": "okmall",
+        "_id": "2894",
+        "_score": 0.84741414,
+        "_source": {
+          "dataid": "2894",
+          "product_name": "NIKE FREE 5.0 LE(631563-001) (나이키 프리 5.0)",
+          "brand_name": "NIKE",
+          "url": "http://www.okmall.com//product/view.html?no=88397&pID=20000542&UNI=F",
+          "thumb": "http://121.254.171.83/ProductImages/88000/img88397_middle6.JPG",
+          "org_price": 119000,
+          "sale_price": 75100,
+          "sale_per": null,
+          "cp": "okmall",
+          "keyword": "땡처리"
+        }
+      },
+      {
+        "_index": "shop",
+        "_type": "okmall",
+        "_id": "2899",
+        "_score": 0.84741414,
+        "_source": {
+          "dataid": "2899",
+          "product_name": "Nike Zoom Fly (630915-400) (나이키 줌 플라이)",
+          "brand_name": "NIKE",
+          "url": "http://www.okmall.com//product/view.html?no=90771&pID=20000542&UNI=M",
+          "thumb": "http://121.254.171.83/ProductImages/90500/img90771_middle6.JPG",
+          "org_price": 129000,
+          "sale_price": 79810,
+          "sale_per": null,
+          "cp": "okmall",
+          "keyword": "땡처리"
+        }
+      },
+      {
+        "_index": "shop",
+        "_type": "okmall",
+        "_id": "2572",
+        "_score": 0.84741414,
+        "_source": {
+          "dataid": "2572",
+          "product_name": "WMNS NIKE FREE OG '14 (642336-400) (우먼스 나이키 프리 OG '14)",
+          "brand_name": "NIKE",
+          "url": "http://www.okmall.com//product/view.html?no=95419&pID=20000542&UNI=BF",
+          "thumb": "http://121.254.171.83/ProductImages/95000/img95419_middle6.JPG",
+          "org_price": 177000,
+          "sale_price": 88500,
+          "sale_per": null,
+          "cp": "okmall",
+          "keyword": "땡처리"
+        }
+      },
+      {
+        "_index": "shop",
+        "_type": "okmall",
+        "_id": "2589",
+        "_score": 0.84741414,
+        "_source": {
+          "dataid": "2589",
+          "product_name": "NIKE FREE TRAINER 3.0 (630856-402) (나이키 프리 트레이너 3.0)",
+          "brand_name": "NIKE",
+          "url": "http://www.okmall.com//product/view.html?no=89830&pID=20000542&UNI=M",
+          "thumb": "http://121.254.171.83/ProductImages/89500/img89830_middle6.JPG",
+          "org_price": 139000,
+          "sale_price": 88960,
+          "sale_per": null,
+          "cp": "okmall",
+          "keyword": "땡처리"
+        }
+      },
+      {
+        "_index": "shop",
+        "_type": "okmall",
+        "_id": "1492",
+        "_score": 0.84741414,
+        "_source": {
+          "dataid": "1492",
+          "product_name": "Ms NIKE ELEMENT HALF-ZIP (504606) (엘리먼트 하프-짚)",
+          "brand_name": "NIKE",
+          "url": "http://www.okmall.com//product/view.html?no=59195&pID=20000687&UNI=M",
+          "thumb": "http://121.254.171.83/ProductImages/59000/img59195_middle6.JPG",
+          "org_price": 83000,
+          "sale_price": 63230,
+          "sale_per": 23.81,
+          "cp": "okmall",
+          "keyword": "긴팔상의 상의 남방"
+        }
+      },
+      {
+        "_index": "shop",
+        "_type": "okmall",
+        "_id": "2267",
+        "_score": 0.84741414,
+        "_source": {
+          "dataid": "2267",
+          "product_name": "NIKE ZOOM SPEED TR2 (684621-002) (나이키 줌 스피드 티알2)",
+          "brand_name": "NIKE",
+          "url": "http://www.okmall.com//product/view.html?no=105752&pID=20000565&UNI=BM",
+          "thumb": "http://121.254.171.83/ProductImages/105500/img105752_middle6.JPG",
+          "org_price": 139000,
+          "sale_price": 85690,
+          "sale_per": null,
+          "cp": "okmall",
+          "keyword": "땡처리"
+        }
+      },
+      {
+        "_index": "shop",
+        "_type": "okmall",
+        "_id": "2286",
+        "_score": 0.84741414,
+        "_source": {
+          "dataid": "2286",
+          "product_name": "NIKE ERIC KOSTON MID (653999-030) (에릭 코스톤 미드)",
+          "brand_name": "NIKE",
+          "url": "http://www.okmall.com//product/view.html?no=94833&pID=20000565&UNI=M",
+          "thumb": "http://121.254.171.83/ProductImages/94500/img94833_middle6.JPG",
+          "org_price": 139000,
+          "sale_price": 89600,
+          "sale_per": null,
+          "cp": "okmall",
+          "keyword": "땡처리"
+        }
+      }
+    ]
+  }
+}

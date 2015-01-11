@@ -1,0 +1,16 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<div class="row">
+    <c:forEach var="list" items="${searchList}">
+    <div class="col-lg-3 col-md-4 col-xs-6 thumb">
+        <div class="thumbnail right-caption span4">
+            <a class="thumbnail" href="${list.getContentUrl()}" target="_new">
+                <img class="img-responsive" src="${list.getThumbUrl()}" alt="${list.getProductName()}">
+                <div class="caption">
+                    <del><small>${list.getOrgPrice()}</small></del> -> ${list.getSalePrice()}<small> <br> [${list.getCpName()}]</small>
+                </div>
+            </a>
+        </div>
+    </div>
+    </c:forEach>
+</div>
