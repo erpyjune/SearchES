@@ -12,9 +12,8 @@ import org.apache.http.impl.client.HttpClients;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.net.URLDecoder;
+import java.util.*;
 
 /**
  * Created by baeonejune on 15. 1. 11..
@@ -76,6 +75,9 @@ public class SearchES {
                 .setSocketTimeout(this.socketTimeout)
                 .setConnectTimeout(this.connectionTimeout)
                 .build();
+
+        System.out.println("(INFO)search:"+this.crawlUrl + "("+this.getClass().getName()+")");
+        System.out.println("(INFO)search:"+ URLDecoder.decode(this.crawlUrl,"UTF-8") + "("+this.getClass().getName()+")");
 
         HttpGet httpGet = new HttpGet(this.crawlUrl);
         httpGet.addHeader("User-Agent", this.USER_AGENT);
@@ -150,5 +152,27 @@ public class SearchES {
         }
 
         return searchDatas;
+    }
+
+
+    public HashMap<String, Object> makePageNavigate(String from, String size) throws Exception {
+        HashMap<String, Object> map = new HashMap<String, Object>();
+
+        int intFrom = Integer.parseInt(from);
+        int intSize = Integer.parseInt(size);
+
+        // for next page
+        int nextFrom = intFrom + intSize;
+        int nextSize  = intSize;
+        map.put("nextFrom", String.valueOf(nextFrom));
+        map.put("nextSize", String.valueOf(nextSize));
+
+        // for prev page
+        int prevFrom = intFrom - intSize;
+        int prevSize = intSize;
+        map.put("prevFrom", String.valueOf(prevFrom));
+        map.put("prevSize", String.valueOf(prevSize));
+
+        return map;
     }
 }

@@ -13,15 +13,16 @@
 
       <%--이전보기--%>
       <li>
-        <a href="./search?q=${query}&from=0&size=${size}"> Go First page </a>
+        <a href="./search?q=${query}&from=0&size=${pageMap.prevSize}"> Go First page </a>
       </li>
+
       <li>
-        <a href="./search?q=${query}&from=0&size=${size}"> Prev page </a>
+        <a href="./search?q=${query}&from=${pageMap.prevFrom}&size=${pageMap.prevSize}"> Prev page </a>
       </li>
 
       <%-- 더보기 --%>
       <li>
-        <a href="./search?q=${query}&from=0&size=${size}"> Next page </a>
+        <a href="./search?q=${query}&from=${pageMap.nextFrom}&size=${pageMap.nextSize}"> Next page </a>
       </li>
 
       <%--마무리--%>

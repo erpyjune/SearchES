@@ -1,11 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: baeonejune
-  Date: 15. 1. 11.
-  Time: 오후 5:23
-  To change this template use File | Settings | File Templates.
---%>
-
 
 <!-- Page Content -->
 <div class="container">
@@ -15,7 +7,8 @@
     <div class="col-lg-12">
       <form class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <input type="text" name="q" class="form-control" placeholder="${query}">
+          <%--<input type="text" name="query" class="form-control" placeholder="${query}">--%>
+          <input type="text" name="query" class="form-control" placeholder="">
         </div>
         <button type="submit" class="btn btn-default">Search</button>
       </form>

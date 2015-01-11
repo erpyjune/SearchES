@@ -5,7 +5,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>${query} - ${title}</title>
+  <title>${orgquery} - ${title}</title>
 
   <!-- Bootstrap Core CSS -->
   <link href="/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
