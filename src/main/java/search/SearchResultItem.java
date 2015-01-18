@@ -3,7 +3,7 @@ package search;
 /**
  * Created by baeonejune on 15. 1. 4..
  */
-public class SearchData {
+public class SearchResultItem {
     private String score;
     private String docid;
     private String productName;
@@ -15,6 +15,7 @@ public class SearchData {
     private String salePer;
     private String cpName;
     private String keyWord;
+
 
     public String getDocid() {
         return docid;

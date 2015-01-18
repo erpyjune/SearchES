@@ -10,6 +10,8 @@
           <%--<input type="text" name="query" class="form-control" placeholder="${query}">--%>
           <input type="text" name="query" class="form-control" placeholder="">
         </div>
+        <input type="hidden" name="size" value="20">
+        <input type="hidden" name="from" value="0">
         <button type="submit" class="btn btn-default">Search</button>
       </form>
     </div>

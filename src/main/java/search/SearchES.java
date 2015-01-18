@@ -109,41 +109,44 @@ public class SearchES {
     }
 
 
-    public ArrayList<SearchData> searchResultParse(String searchResult) throws Exception {
-        ArrayList<SearchData> searchDatas = new ArrayList<SearchData>();
+    public SearchResult getSearchResult(String searchResult) throws Exception {
+        SearchResult sr = new SearchResult();
+        Vector<SearchResultItem> searchResultItems = new Vector<SearchResultItem>();
+        SearchResultHeader searchResultHeader = new SearchResultHeader();
 
         ObjectMapper objectMapper = new ObjectMapper();
         JsonNode rootNode = objectMapper.readTree(searchResult);
         JsonNode hits = rootNode.path("hits");
 
-        System.out.println(hits.get("total"));
-        System.out.println(hits.get("max_score"));
-
+        System.out.println("total : "+hits.get("total"));
+        System.out.println(hits.get("max_score").asText());
 
         JsonNode list = hits.path("hits");
         Iterator iterator = list.iterator();
+        int listCount=0;
         while(iterator.hasNext()) {
-            SearchData searchData = new SearchData();
+            SearchResultItem searchResultItem = new SearchResultItem();
             JsonNode node = (JsonNode)iterator.next();
 
-            searchData.setScore(node.get("_score").textValue());
+            searchResultItem.setScore(node.get("_score").textValue());
 
 //            System.out.println(node.get("_id"));
 //            System.out.println(node.get("_score"));
 
             JsonNode source = node.path("_source");
-            searchData.setDocid(source.get("dataid").textValue());
-            searchData.setProductName(source.get("product_name").textValue());
-            searchData.setBrandName(source.get("brand_name").textValue());
-            searchData.setContentUrl(source.get("url").textValue());
-            searchData.setThumbUrl(source.get("thumb").textValue());
-            searchData.setOrgPrice(source.get("org_price").asText());
-            searchData.setSalePrice(source.get("sale_price").asText());
-            searchData.setSalePer(source.get("sale_per").asText());
-            searchData.setCpName(source.get("cp").textValue());
-            searchData.setKeyWord(source.get("keyword").textValue());
+            searchResultItem.setDocid(source.get("dataid").textValue());
+            searchResultItem.setProductName(source.get("product_name").textValue());
+            searchResultItem.setBrandName(source.get("brand_name").textValue());
+            searchResultItem.setContentUrl(source.get("url").textValue());
+            searchResultItem.setThumbUrl(source.get("thumb").textValue());
+            searchResultItem.setOrgPrice(source.get("org_price").asText());
+            searchResultItem.setSalePrice(source.get("sale_price").asText());
+            searchResultItem.setSalePer(source.get("sale_per").asText());
+            searchResultItem.setCpName(source.get("cp").textValue());
+            searchResultItem.setKeyWord(source.get("keyword").textValue());
 
-            searchDatas.add(searchData);
+            searchResultItems.add(searchResultItem);
+            listCount++;
 
 //            System.out.println(source.get("dataid"));
 //            System.out.println(source.get("product_name"));
@@ -151,11 +154,17 @@ public class SearchES {
 //            System.out.println("=======================");
         }
 
-        return searchDatas;
+        searchResultHeader.setListCount(listCount);
+        searchResultHeader.setTotalResultCount(Integer.parseInt(hits.get("total").asText()));
+
+        sr.setSearchResultHeader(searchResultHeader);
+        sr.setSearchResultItems(searchResultItems);
+
+        return sr;
     }
 
 
-    public HashMap<String, Object> makePageNavigate(String from, String size) throws Exception {
+    public HashMap<String, Object> makePageNavigate(String from, String size, int listCount) throws Exception {
         HashMap<String, Object> map = new HashMap<String, Object>();
 
         int intFrom = Integer.parseInt(from);
@@ -164,14 +173,18 @@ public class SearchES {
         // for next page
         int nextFrom = intFrom + intSize;
         int nextSize  = intSize;
-        map.put("nextFrom", String.valueOf(nextFrom));
-        map.put("nextSize", String.valueOf(nextSize));
+        map.put("nextFrom", nextFrom);
+        map.put("nextSize", nextSize);
 
         // for prev page
-        int prevFrom = intFrom - intSize;
+        int prevFrom=0;
+        if (intFrom > 0) {
+            prevFrom = intFrom - intSize;
+        }
+
         int prevSize = intSize;
-        map.put("prevFrom", String.valueOf(prevFrom));
-        map.put("prevSize", String.valueOf(prevSize));
+        map.put("prevFrom", prevFrom);
+        map.put("prevSize", prevSize);
 
         return map;
     }

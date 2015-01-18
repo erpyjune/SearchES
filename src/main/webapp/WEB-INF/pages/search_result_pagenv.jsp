@@ -1,3 +1,5 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <%--
   Created by IntelliJ IDEA.
   User: baeonejune
@@ -10,20 +12,32 @@
 <div class="row text-center">
   <div class="col-lg-12">
     <ul class="pager">
+      <h1>prevFrom:${pageMap.prevFrom}</h1>
+        <h1>prevSize:${pageMap.prevSize}</h1>
+        <h1>nextFrom:${pageMap.nextFrom}</h1>
+        <h1>nextSize:${pageMap.nextSize}</h1>
+        <h1>searchTotalCount:${searchTotalCount}</h1>
+        <h1>searchListCount:${searchListCount}</h1>
 
-      <%--이전보기--%>
-      <li>
-        <a href="./search?query=${query}&from=0&size=${pageMap.prevSize}"> Go First page </a>
-      </li>
 
-      <li>
-        <a href="./search?query=${query}&from=${pageMap.prevFrom}&size=${pageMap.prevSize}"> Prev page </a>
-      </li>
+      <c:if test="${pageMap.prevFrom > 0}">
+        <li>
+          <a href="./search?query=${query}&from=0&size=${pageMap.prevSize}"> Go First page </a>
+        </li>
+      </c:if>
 
-      <%-- 더보기 --%>
+      <c:if test="${pageMap.prevFrom > 0}">
+         <li>
+           <a href="./search?query=${query}&from=${pageMap.prevFrom}&size=${pageMap.prevSize}"> Prev page </a>
+         </li>
+      </c:if>
+
+    <c:if test="${pageMap.nextSize eq searchListCount}">
       <li>
         <a href="./search?query=${query}&from=${pageMap.nextFrom}&size=${pageMap.nextSize}"> Next page </a>
       </li>
+    </c:if>
+
 
       <%--마무리--%>
     </ul>
