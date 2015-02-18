@@ -11,12 +11,13 @@ import java.util.HashMap;
 public class QueryProcessor {
     private String from;
     private String size;
+    private String sort;
     private String originalQuery;
     private String searchQuery;
     private String searchQueryParam;
     private HashMap<String, Object> queryParamList;
 
-    private final String prefixUrl = "http://localhost:9200/shop/okmall/_search?";
+    private final String prefixUrl = "http://localhost:9200/shop/okmall/_search?pretty=true&";
 
 
     public String getFrom() {
@@ -71,9 +72,19 @@ public class QueryProcessor {
         return prefixUrl;
     }
 
+    public String getSort() {
+        return sort;
+    }
+
+    public void setSort(String sort) {
+        this.sort = sort;
+    }
+
     public void paramParser(HttpServletRequest request) throws  Exception {
         String from = request.getParameter("from");
         String size = request.getParameter("size");
+        String sort = request.getParameter("sort");
+
         String orgQuery = new String(request.getParameter("query").getBytes("ISO-8859-1"), "UTF-8");
         if (orgQuery==null) {
             orgQuery = "*";
@@ -81,20 +92,20 @@ public class QueryProcessor {
 
         String searchQuery = URLEncoder.encode(orgQuery, "UTF-8");
         if (from==null)  from = "0";
-        if (size==null)  size = "10";
+        if (size==null)  size = "20";
 
         this.from = from;
         this.size = size;
+        this.sort = sort;
         this.originalQuery = orgQuery;
         this.searchQuery = searchQuery;
     }
 
     public void makeQueryParam() throws Exception {
-        StringBuilder sb = new StringBuilder();
-        sb.append(prefixUrl);
-        sb.append("from="+from);
-        sb.append("&size="+size);
-        sb.append("&q="+searchQuery);
+        StringBuilder sb = new StringBuilder(prefixUrl);
+        sb.append("from=").append(from);
+        sb.append("&size=").append(size);
+        sb.append("&q=").append(searchQuery);
 
         searchQueryParam = sb.toString();
     }
