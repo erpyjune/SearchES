@@ -18,7 +18,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./search.php?q=*&type=${type}">OutdoorLife&You</a>
+      <a class="navbar-brand" href="./summary?q=*&type=${type}">OutdoorLife&You</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

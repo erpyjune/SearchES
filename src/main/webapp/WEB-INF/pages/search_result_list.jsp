@@ -18,10 +18,10 @@
 
   <div class="col-md-4">
     <h4>${list.getProductName()}</h4>
-    <a href="./search?q=${query_param}">
+    <a href="./summary?q=${query_param}">
       <span class="label label-default">${list.getBrandName()}</span>
     </a>
-    <a href="./search?q=${query_param}">
+    <a href="./summary?q=${query_param}">
       <span class="label label-warning">${list.getCpName()}</span>
     </a>
     <h4><del><small>${list.getOrgPrice()}</small></del> -> <strong class="text-danger">${list.getSalePrice()}</strong></h4>

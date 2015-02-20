@@ -19,6 +19,9 @@ import org.apache.log4j.Logger;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.*;
@@ -35,8 +38,8 @@ public class SearchES {
     private String crawlEncoding="UTF-8"; // UTF-8, EUC-KR
     private String requestBody;
     private int reponseCode;
-    private int socketTimeout=1000;
-    private int connectionTimeout=1000;
+    private int socketTimeout=3000;
+    private int connectionTimeout=3000;
     // Request Header
     private static final String USER_AGENT = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.71 Safari/537.36";
     private static final String REFERER = "http://www.google.com/";
@@ -113,17 +116,17 @@ public class SearchES {
 
         CloseableHttpClient httpClient = HttpClients.createDefault();
         RequestConfig requestConfig = RequestConfig.custom()
-                .setSocketTimeout(this.socketTimeout)
-                .setConnectTimeout(this.connectionTimeout)
+                .setSocketTimeout(socketTimeout)
+                .setConnectTimeout(connectionTimeout)
                 .build();
 
-        logger.info("search:"+this.crawlUrl + "("+this.getClass().getName()+")");
-        logger.info("search:"+ URLDecoder.decode(this.crawlUrl,"UTF-8") + "("+this.getClass().getName()+")");
+        logger.info("search url : "+this.crawlUrl + "("+this.getClass().getName()+")");
 
         HttpGet httpGet = new HttpGet(crawlUrl);
         httpGet.addHeader("User-Agent", USER_AGENT);
         httpGet.addHeader("Referer",    REFERER);
         httpGet.addHeader("Connection", CONNECTION);
+        httpGet.addHeader("Content-Type", ContentTypeUTF8);
         httpGet.setConfig(requestConfig);
 
         CloseableHttpResponse closeableHttpResponse = httpClient.execute(httpGet);
@@ -132,7 +135,7 @@ public class SearchES {
         try {
             HttpEntity httpEntity = closeableHttpResponse.getEntity();
             BufferedReader rd = new BufferedReader(
-                    new InputStreamReader(closeableHttpResponse.getEntity().getContent(), this.crawlEncoding));
+                    new InputStreamReader(closeableHttpResponse.getEntity().getContent(), crawlEncoding));
 
             String line;
             StringBuilder result = new StringBuilder();
@@ -142,9 +145,9 @@ public class SearchES {
             }
 
             if (result.length() <= 0) {
-                this.crawlData = "";
+                crawlData = "";
             } else {
-                this.crawlData = result.toString();
+                crawlData = result.toString();
             }
         } finally {
             closeableHttpResponse.close();
@@ -271,5 +274,56 @@ public class SearchES {
         map.put("prevSize", prevSize);
 
         return map;
+    }
+
+
+    public void urlConn() throws Exception {
+        BufferedReader rd;
+        OutputStreamWriter wr;
+
+        try
+        {
+            logger.info("url:" + crawlUrl);
+            URL url = new URL(crawlUrl);
+            URLConnection conn = url.openConnection();
+            conn.setDoOutput(true);
+            wr = new OutputStreamWriter(conn.getOutputStream());
+            wr.flush();
+
+            // Get the response
+            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+            String line;
+            while ((line = rd.readLine()) != null) {
+                logger.info(line);
+            }
+        }
+        catch (Exception e) {
+            logger.error(e.toString());
+        }
+
+    }
+
+    public static void main(String[] args) throws Exception {
+        QueryProcessor qp = new QueryProcessor();
+        SearchResult sr = new SearchResult();
+        SearchES se = new SearchES();
+
+        // make query string...
+        qp.setFrom("0");
+        qp.setSize("10");
+        qp.setOriginalQuery("잠바");
+        //String searchQuery = URLEncoder.encode(orgQuery, "UTF-8");
+        qp.setSearchQuery("jacket");
+        qp.makeQueryJsonParam();
+
+        se.setCrawlUrl(qp.getSearchQueryParam());
+        se.setCrawlEncoding("utf-8");
+
+        // searching...
+        //se.search();
+        se.urlConn();
+
+        // parsing result...
+        //sr = se.getSearchResult(se.getCrawlData());
     }
 }

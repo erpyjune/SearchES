@@ -22,19 +22,19 @@
 
       <c:if test="${pageMap.prevFrom > 0}">
         <li>
-          <a href="./search?query=${query}&from=0&size=${pageMap.prevSize}"> Go First page </a>
+          <a href="./summary?query=${query}&from=0&size=${pageMap.prevSize}"> Go First page </a>
         </li>
       </c:if>
 
       <c:if test="${pageMap.prevFrom > 0}">
          <li>
-           <a href="./search?query=${query}&from=${pageMap.prevFrom}&size=${pageMap.prevSize}"> Prev page </a>
+           <a href="./summary?query=${query}&from=${pageMap.prevFrom}&size=${pageMap.prevSize}"> Prev page </a>
          </li>
       </c:if>
 
     <c:if test="${pageMap.nextSize eq searchListCount}">
       <li>
-        <a href="./search?query=${query}&from=${pageMap.nextFrom}&size=${pageMap.nextSize}"> Next page </a>
+        <a href="./summary?query=${query}&from=${pageMap.nextFrom}&size=${pageMap.nextSize}"> Next page </a>
       </li>
     </c:if>
 
