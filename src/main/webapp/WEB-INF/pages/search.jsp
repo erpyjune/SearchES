@@ -9,7 +9,15 @@
 <%@include file="./search_body.jsp"%>
 
 <%@include file="./search_result_header.jsp"%>
-<%@include file="./search_result_list.jsp"%>
+
+<c:if test="${displayType eq 0}">
+    <%@include file="./search_result_list.jsp"%>
+</c:if>
+
+<c:if test="${displayType eq 1}">
+    <%@include file="./search_result_list2.jsp"%>
+</c:if>
+
 <%@include file="./search_result_pagenv.jsp"%>
 
 <%@include file="./search_footer.jsp"%>

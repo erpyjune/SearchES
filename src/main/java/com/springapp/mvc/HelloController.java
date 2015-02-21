@@ -4,10 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import search.QueryProcessor;
-import search.SearchResult;
-import search.SearchResultItem;
-import search.SearchES;
+import search.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.HashMap;
@@ -24,56 +21,23 @@ public class HelloController {
 		return "hello";
 	}
 
-	@RequestMapping("/search")
-	public String searchES(HttpServletRequest request, ModelMap modelMap) throws Exception {
-		QueryProcessor qp = new QueryProcessor();
-		SearchResult sr = new SearchResult();
-		SearchES se = new SearchES();
-
-		// make search param...
-		qp.paramParser(request);
-		qp.makeQueryUriParam();
-		se.setCrawlUrl(qp.getSearchQueryParam());
-		se.setCrawlEncoding("utf-8");
-
-		// searching...
-		se.search();
-
-		// parsing result...
-		sr = se.getSearchResult(se.getCrawlData());
-
-		// make page navigation...
-		HashMap<String, Object> pageMap = new HashMap<String, Object>();
-		pageMap = se.makePageNavigate(qp.getFrom(), qp.getSize(), sr.getSearchResultHeader().getListCount());
-
-		modelMap.addAttribute("searchList", sr.getSearchResultItems());
-		modelMap.addAttribute("pageMap", pageMap);
-		modelMap.addAttribute("title","Good Luck!");
-		modelMap.addAttribute("searchTotalCount",sr.getSearchResultHeader().getTotalResultCount());
-		modelMap.addAttribute("searchListCount",sr.getSearchResultHeader().getListCount());
-
-		modelMap.addAttribute("from",qp.getFrom());
-		modelMap.addAttribute("size",qp.getSize());
-		modelMap.addAttribute("query",qp.getSearchQuery());
-		modelMap.addAttribute("originalQuery", qp.getOriginalQuery());
-
-		return "search";
-	}
-
 
     @RequestMapping("/summary")
-    public String search2(HttpServletRequest request, ModelMap modelMap) throws Exception {
+    public String search(HttpServletRequest request, ModelMap modelMap) throws Exception {
         QueryProcessor qp = new QueryProcessor();
+        RequestParam rp = new RequestParam();
         SearchResult sr = new SearchResult();
         SearchES se = new SearchES();
+        MakeModelMap mmm = new MakeModelMap();
+        ModelMap model = null;
 
-        // make search param...
-        qp.paramParser(request);
+        // request param extract..
+        rp.paramParser(request);
 
         // make query string...
-        qp.makeQueryJsonParam();
+        qp.makeQueryJsonParam(rp);
 
-        se.setCrawlUrl(qp.getSearchQueryParam());
+        se.setCrawlUrl(rp.getSearchUrlParam());
         se.setCrawlEncoding("utf-8");
 
         // searching...
@@ -84,7 +48,7 @@ public class HelloController {
 
         // make page navigation...
         HashMap<String, Object> pageMap = new HashMap<String, Object>();
-        pageMap = se.makePageNavigate(qp.getFrom(), qp.getSize(), sr.getSearchResultHeader().getListCount());
+        pageMap = qp.makePageNavigate(rp, sr);
 
         modelMap.addAttribute("searchList", sr.getSearchResultItems());
         modelMap.addAttribute("pageMap", pageMap);
@@ -92,10 +56,14 @@ public class HelloController {
         modelMap.addAttribute("searchTotalCount",sr.getSearchResultHeader().getTotalResultCount());
         modelMap.addAttribute("searchListCount",sr.getSearchResultHeader().getListCount());
 
-        modelMap.addAttribute("from",qp.getFrom());
-        modelMap.addAttribute("size",qp.getSize());
-        modelMap.addAttribute("query",qp.getSearchQuery());
-        modelMap.addAttribute("originalQuery", qp.getOriginalQuery());
+        modelMap.addAttribute("displayType", rp.getDisplayType());
+        modelMap.addAttribute("sortField", rp.getSortField());
+        modelMap.addAttribute("sortOption", rp.getSortOption());
+
+        modelMap.addAttribute("from",rp.getFrom());
+        modelMap.addAttribute("size",rp.getSize());
+        modelMap.addAttribute("query",rp.getSearchQuery());
+        modelMap.addAttribute("originalQuery", rp.getOriginalQuery());
 
         return "search";
     }

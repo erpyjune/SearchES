@@ -251,32 +251,6 @@ public class SearchES {
     }
 
 
-    public HashMap<String, Object> makePageNavigate(String from, String size, int listCount) throws Exception {
-        HashMap<String, Object> map = new HashMap<String, Object>();
-
-        int intFrom = Integer.parseInt(from);
-        int intSize = Integer.parseInt(size);
-
-        // for next page
-        int nextFrom = intFrom + intSize;
-        int nextSize  = intSize;
-        map.put("nextFrom", nextFrom);
-        map.put("nextSize", nextSize);
-
-        // for prev page
-        int prevFrom=0;
-        if (intFrom > 0) {
-            prevFrom = intFrom - intSize;
-        }
-
-        int prevSize = intSize;
-        map.put("prevFrom", prevFrom);
-        map.put("prevSize", prevSize);
-
-        return map;
-    }
-
-
     public void urlConn() throws Exception {
         BufferedReader rd;
         OutputStreamWriter wr;
@@ -305,16 +279,13 @@ public class SearchES {
 
     public static void main(String[] args) throws Exception {
         QueryProcessor qp = new QueryProcessor();
+        RequestParam rp = new RequestParam();
         SearchResult sr = new SearchResult();
         SearchES se = new SearchES();
 
         // make query string...
-        qp.setFrom("0");
-        qp.setSize("10");
-        qp.setOriginalQuery("잠바");
-        //String searchQuery = URLEncoder.encode(orgQuery, "UTF-8");
-        qp.setSearchQuery("jacket");
-        qp.makeQueryJsonParam();
+        rp.setSearchQuery("nike");
+        qp.makeQueryJsonParam(rp);
 
         se.setCrawlUrl(qp.getSearchQueryParam());
         se.setCrawlEncoding("utf-8");

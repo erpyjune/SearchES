@@ -1,5 +1,6 @@
 package search;
 
+import org.apache.commons.codec.binary.StringUtils;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,9 +15,12 @@ public class QueryProcessor {
 
     private static Logger logger = Logger.getLogger(QueryProcessor.class.getName());
 
-    private String from;
-    private String size;
-    private String sort;
+    private String from="0";
+    private String size="20";
+    private String sortField=null;
+    private String sortOption=null;
+    private String operator="or";
+    private String type="best_fields";
     private String originalQuery;
     private String searchQuery;
     private String searchQueryParam;
@@ -77,50 +81,40 @@ public class QueryProcessor {
         return prefixUrl;
     }
 
-    public String getSort() {
-        return sort;
+    public String getSortField() {
+        return sortField;
     }
 
-    public void setSort(String sort) {
-        this.sort = sort;
+    public void setSortField(String sortField) {
+        this.sortField = sortField;
     }
 
-    public void paramParser(HttpServletRequest request) throws  Exception {
-        String from = request.getParameter("from");
-        String size = request.getParameter("size");
-        String sort = request.getParameter("sort");
-
-        String orgQuery = new String(request.getParameter("query").getBytes("ISO-8859-1"), "UTF-8");
-        if (orgQuery.isEmpty()) {
-            orgQuery = "*";
-        }
-
-        //String searchQuery = URLEncoder.encode(orgQuery, "UTF-8");
-        String searchQuery = orgQuery;
-
-        logger.info("searchQuery : " + searchQuery);
-
-
-        if (from==null)  from = "0";
-        if (size==null)  size = "20";
-
-        this.from = from;
-        this.size = size;
-        this.sort = sort;
-        this.originalQuery = orgQuery;
-        this.searchQuery = searchQuery;
+    public static Logger getLogger() {
+        return logger;
     }
 
-    public void makeQueryUriParam() throws Exception {
-        StringBuilder sb = new StringBuilder(prefixUrl);
-        sb.append("from=").append(from);
-        sb.append("&size=").append(size);
-        sb.append("&q=").append(searchQuery);
-
-        searchQueryParam = sb.toString();
+    public static void setLogger(Logger logger) {
+        QueryProcessor.logger = logger;
     }
 
-    public void makeQueryJsonParam() throws Exception {
+    public String getOperator() {
+        return operator;
+    }
+
+    public void setOperator(String operator) {
+        this.operator = operator;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
+    }
+
+
+    public void makeQueryJsonParam(RequestParam rp) throws Exception {
 //        String str = "http://localhost:9200/shop/okmall/_search?source=" +
 //                "{\"query\" : {\"multi_match\": {\"query\":\"jacket\",\"type\":\"best_fields\",\"operator\" : \"and\"," +
 //                "\"fields\":[ \"product_name^2\", \"brand_name^1\", \"keyword^1\" ]}}," +
@@ -129,22 +123,71 @@ public class QueryProcessor {
 //                "\"highlight\": {\"fields\" : {\"product_name\" : {},\"brand_name\": {}}}}";
 
         String urlPart = "http://localhost:9200/shop/okmall/_search?source=";
-        String queryPart = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\"," +
-                "\"type\":\"best_fields\",\"operator\" : \"and\",", searchQuery);
-        String searchFieldPart = "\"fields\":[ \"product_name^2\", \"brand_name^1\", \"keyword^1\" ]}},";
-        String fromSizePart = String.format("\"from\" : %s,\"size\" : %s,", from, size);
-        String sortPart = "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}],";
+        String queryPart = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
+        String typePart        = String.format("\"type\":\"%s\",", rp.getSearchType());
+        String operatorPart    = String.format("\"operator\" : \"%s\",", rp.getOperator());
+        String searchFieldPart = "\"fields\":[ \"product_name^3\", \"brand_name^1\", \"keyword^1\" ]}},";
+        String fromSizePart = String.format("\"from\" : %s,\"size\" : %s,", rp.getFrom(), rp.getSize());
+        String sortPart="";
+        if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
+//            String sortPart = "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}],";
+            sortPart = String.format("\"sort\" : [{\"%s\" : \"%s\"}],",rp.getSortField(), rp.getSortOption());
+        }
+
         String highlightPart = "\"highlight\": {\"fields\" : {\"product_name\" : {},\"brand_name\": {}}}}";
 
         StringBuilder sb = new StringBuilder(urlPart);
         sb.append(URLEncoder.encode(queryPart, "UTF-8"));
+        sb.append(URLEncoder.encode(typePart, "UTF-8"));
+        sb.append(URLEncoder.encode(operatorPart, "UTF-8"));
         sb.append(URLEncoder.encode(searchFieldPart,"UTF-8"));
         sb.append(URLEncoder.encode(fromSizePart,"UTF-8"));
-        sb.append(URLEncoder.encode(sortPart,"UTF-8"));
+        if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
+            sb.append(URLEncoder.encode(sortPart,"UTF-8"));
+        }
         sb.append(URLEncoder.encode(highlightPart,"UTF-8"));
 
-        searchQueryParam = sb.toString();
+        // 최종 검색할 url 셋팅.
+        rp.setSearchUrlParam(sb.toString());
     }
+
+
+    public HashMap<String, Object> makePageNavigate(RequestParam rp, SearchResult sr) throws Exception {
+        HashMap<String, Object> map = new HashMap<String, Object>();
+
+        int intFrom = Integer.parseInt(rp.getFrom());
+        int intSize = Integer.parseInt(rp.getSize());
+
+        // for next page...
+        int nextFrom = intFrom + intSize;
+        map.put("nextPageFrom", nextFrom);
+        map.put("nextPageSize", intSize);
+
+        // for prev page
+        int prevFrom=0;
+        if (intFrom > 0) {
+            prevFrom = intFrom - intSize;
+        }
+
+        // for prev page...
+        map.put("prevPageFrom", prevFrom);
+        map.put("prevPageSize", intSize);
+
+        // current page...
+        map.put("currPageFrom", rp.getFrom());
+        map.put("currPageSize", rp.getSize());
+
+        int showCount = intFrom + intSize;
+        if (sr.getSearchResultHeader().getTotalResultCount() <= showCount) {
+            map.put("nextPageYN", "0");
+        }
+        else {
+            map.put("nextPageYN", "1");
+        }
+
+        return map;
+    }
+
 
     public static void main(String[] args) {
         String query = "자켓";

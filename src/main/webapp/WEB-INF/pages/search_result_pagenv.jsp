@@ -12,29 +12,29 @@
 <div class="row text-center">
   <div class="col-lg-12">
     <ul class="pager">
-      <h1>prevFrom:${pageMap.prevFrom}</h1>
-        <h1>prevSize:${pageMap.prevSize}</h1>
-        <h1>nextFrom:${pageMap.nextFrom}</h1>
-        <h1>nextSize:${pageMap.nextSize}</h1>
+      <!-- h1>prevFrom:${pageMap.prevPageFrom}</h1>
+        <h1>prevSize:${pageMap.prevPageSize}</h1>
+        <h1>nextFrom:${pageMap.nextPageFrom}</h1>
+        <h1>nextSize:${pageMap.nextPageSize}</h1>
         <h1>searchTotalCount:${searchTotalCount}</h1>
-        <h1>searchListCount:${searchListCount}</h1>
+        <h1>searchListCount:${searchListCount}</h1 -->
 
 
-      <c:if test="${pageMap.prevFrom > 0}">
+      <c:if test="${pageMap.currPageFrom > 0}">
         <li>
-          <a href="./summary?query=${query}&from=0&size=${pageMap.prevSize}"> Go First page </a>
+          <a href="./summary?query=${query}&from=0&size=${pageMap.prevPageSize}&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}"> Go First page </a>
         </li>
       </c:if>
 
-      <c:if test="${pageMap.prevFrom > 0}">
+      <c:if test="${pageMap.currPageFrom > 0}">
          <li>
-           <a href="./summary?query=${query}&from=${pageMap.prevFrom}&size=${pageMap.prevSize}"> Prev page </a>
+           <a href="./summary?query=${query}&from=${pageMap.prevPageFrom}&size=${pageMap.prevPageSize}&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}"> Prev page </a>
          </li>
       </c:if>
 
-    <c:if test="${pageMap.nextSize eq searchListCount}">
+    <c:if test="${pageMap.nextPageYN eq 1}">
       <li>
-        <a href="./summary?query=${query}&from=${pageMap.nextFrom}&size=${pageMap.nextSize}"> Next page </a>
+        <a href="./summary?query=${query}&from=${pageMap.nextPageFrom}&size=${pageMap.nextPageSize}&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}"> Next page </a>
       </li>
     </c:if>
 
