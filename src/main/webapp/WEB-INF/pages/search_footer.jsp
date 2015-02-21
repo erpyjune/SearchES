@@ -21,10 +21,10 @@
 <!------------------ /.container --------------------->
 
 <!-- jQuery Version 1.11.0 -->
-<script src="bootstrap/js/jquery-1.11.0.js"></script>
+<script src="/SearchES/resources/bootstrap/js/jquery-1.11.0.js"></script>
 
 <!-- Bootstrap Core JavaScript -->
-<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="/SearchES/resources/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 
