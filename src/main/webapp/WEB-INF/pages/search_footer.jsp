@@ -9,7 +9,7 @@
 <footer>
   <div class="row">
     <div class="col-lg-12">
-      <p>Copyright &copy; OutdoorLife & You 2013</p>
+      <p>Copyright &copy; OutdoorLife & You 2013 안녕</p>
       <p><small>outdoorlifenyou@gmail.com</small></p>
     </div>
   </div>

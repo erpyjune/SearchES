@@ -18,33 +18,65 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./summary?q=*&type=${type}">OutdoorLife&You</a>
+      <a class="navbar-brand" href="./summary?query=tent tarp pants&size=20&from=0&display_type=${displayType}&operator=or">OutdoorLife&You</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
+        <%--<li>--%>
+          <%--<a href="./summary?query=tent tarp&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Tent/Tarp</a>--%>
+        <%--</li>--%>
+
+          <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tent/Tarp <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">
+                  <li><a href="./summary?query=tent tarp&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Tent & Tarp</a></li>
+                  <li><a href="./summary?query=tent&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Tent</a></li>
+                  <li><a href="./summary?query=tarp&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Tarp</a></li>
+                  <li><a href="#">Living shell</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">Separated link</a></li>
+                  <li class="divider"></li>
+                  <li><a href="#">One more separated link</a></li>
+              </ul>
+          </li>
+
         <li>
-          <a href="./summary?q=텐트 OR 타프&type=${type}&suje=텐트">Tent/Tarp</a>
+          <a href="./summary?query=table chair&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Table/Chair</a>
         </li>
         <li>
-          <a href="./summary?q=테이블 OR 체어 OR 의자 OR 가구&type=${type}&suje=가구">Table/Chair</a>
+          <a href="./summary?query=copel&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Copel</a>
         </li>
         <li>
-          <a href="./summary?q=코펠 OR 식기 OR 수저 OR 칼 OR 도마 OR 나이프&type=${type}&suje=식기">Copel</a>
+          <a href="./summary?query=sleepingbag mat&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Sleeping Bag</a>
         </li>
         <li>
-          <a href="./summary?q=침낭 OR 매트&type=${type}&suje=침낭">Sleeping Bag</a>
+          <a href="./summary?query=lantern stove burner&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Burner / Lantern</a>
         </li>
         <li>
-          <a href="./summary?q=랜턴 OR 버너 OR 후레시 OR 스토브&type=${type}&suje=랜턴">Bunner / Lantern</a>
+          <a href="./summary?query=bag backpack&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Bag</a>
         </li>
         <li>
-          <a href="./summary?q=배낭 OR 가방 OR 수납가방&type=${type}&suje=가방">Bag</a>
+          <a href="./summary?query=shoos&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Shoos</a>
         </li>
-        <li>
-          <a href="./summary?q=등산화 OR 신발&type=${type}&suje=신발">Shoos</a>
+
+        <%--<li>--%>
+          <%--<a href="./summary?query=pants jacket&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Pants&Jacket</a>--%>
+        <%--</li>--%>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Jacket/Pants <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="./summary?query=pants jacket&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Pants/Jacket</a></li>
+                <li><a href="./summary?query=pants&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Pants</a></li>
+                <li><a href="./summary?query=jacket&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Jacket</a></li>
+                <li><a href="#">T-shirts</a></li>
+                <li><a href="#"></a></li>
+                <li><a href="#">One more separated link</a></li>
+            </ul>
         </li>
+
         <li>
           <a href="#">About</a>
         </li>

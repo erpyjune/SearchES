@@ -59,6 +59,7 @@ public class HelloController {
         modelMap.addAttribute("displayType", rp.getDisplayType());
         modelMap.addAttribute("sortField", rp.getSortField());
         modelMap.addAttribute("sortOption", rp.getSortOption());
+        modelMap.addAttribute("operator", rp.getOperator());
 
         modelMap.addAttribute("from",rp.getFrom());
         modelMap.addAttribute("size",rp.getSize());

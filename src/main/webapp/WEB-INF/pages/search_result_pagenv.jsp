@@ -22,19 +22,19 @@
 
       <c:if test="${pageMap.currPageFrom > 0}">
         <li>
-          <a href="./summary?query=${query}&from=0&size=${pageMap.prevPageSize}&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}"> Go First page </a>
+          <a href="./summary?query=${query}&from=0&size=${pageMap.prevPageSize}&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}&operator=${operator}"> Go First page </a>
         </li>
       </c:if>
 
       <c:if test="${pageMap.currPageFrom > 0}">
          <li>
-           <a href="./summary?query=${query}&from=${pageMap.prevPageFrom}&size=${pageMap.prevPageSize}&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}"> Prev page </a>
+           <a href="./summary?query=${query}&from=${pageMap.prevPageFrom}&size=${pageMap.prevPageSize}&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}&operator=${operator}"> Prev page </a>
          </li>
       </c:if>
 
     <c:if test="${pageMap.nextPageYN eq 1}">
       <li>
-        <a href="./summary?query=${query}&from=${pageMap.nextPageFrom}&size=${pageMap.nextPageSize}&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}"> Next page </a>
+        <a href="./summary?query=${query}&from=${pageMap.nextPageFrom}&size=${pageMap.nextPageSize}&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}&operator=${operator}"> Next page </a>
       </li>
     </c:if>
 
