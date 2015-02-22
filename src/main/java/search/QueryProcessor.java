@@ -126,7 +126,7 @@ public class QueryProcessor {
         String queryPart = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
         String typePart        = String.format("\"type\":\"%s\",", rp.getSearchType());
         String operatorPart    = String.format("\"operator\" : \"%s\",", rp.getOperator());
-        String searchFieldPart = "\"fields\":[ \"product_name^3\", \"brand_name^1\", \"keyword^1\" ]}},";
+        String searchFieldPart = "\"fields\":[ \"product_name^3\", \"brand_name^1\", \"keyword^3\" ]}},";
         String fromSizePart = String.format("\"from\" : %s,\"size\" : %s,", rp.getFrom(), rp.getSize());
         String sortPart="";
         if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
