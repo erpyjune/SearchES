@@ -42,23 +42,72 @@
               </ul>
           </li>
 
+        <%--<li>--%>
+          <%--<a href="./summary?query=table chair&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">--%>
+              <%--Table/Chair</a>--%>
+        <%--</li>--%>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Funiture <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="./summary?query=table chair&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Table & Chair</a></li>
+                <li><a href="./summary?query=table&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Table</a></li>
+                <li><a href="./summary?query=chair&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Chair</a></li>
+                <li><a href="./summary?query=cot&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Cot</a></li>
+                <li><a href="./summary?query=hammock&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Hammock</a></li>
+                <li><a href="#">Living shell</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Tableware <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="./summary?query=copel plate cooler cup fork frying pan&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Tableware</a></li>
+                <li><a href="./summary?query=copel&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Copel</a></li>
+                <li><a href="./summary?query=plate&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Plate</a></li>
+                <li><a href="./summary?query=cup&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Cup</a></li>
+                <li><a href="./summary?query=cooler&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Cooler</a></li>
+                <li><a href="./summary?query=frying pan&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Frying pan</a></li>
+                <li><a href="#">Living shell</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+            </ul>
+        </li>
+
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Sleeping <span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+                <li><a href="./summary?query=copel plate cooler cup fork frying pan&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Tableware</a></li>
+                <li><a href="./summary?query=copel&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Copel</a></li>
+                <li><a href="./summary?query=plate&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Plate</a></li>
+                <li><a href="./summary?query=cup&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Cup</a></li>
+                <li><a href="./summary?query=cooler&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Cooler</a></li>
+                <li><a href="./summary?query=frying pan&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Frying pan</a></li>
+                <li><a href="#">Living shell</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+                <li class="divider"></li>
+                <li><a href="#">One more separated link</a></li>
+            </ul>
+        </li>
+
         <li>
-          <a href="./summary?query=table chair&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Table/Chair</a>
+          <a href="./summary?query=lantern stove burner&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">
+              Burner / Lantern</a>
         </li>
         <li>
-          <a href="./summary?query=copel&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Copel</a>
+          <a href="./summary?query=bag backpack&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">
+              Bag</a>
         </li>
         <li>
-          <a href="./summary?query=sleepingbag mat&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Sleeping Bag</a>
-        </li>
-        <li>
-          <a href="./summary?query=lantern stove burner&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Burner / Lantern</a>
-        </li>
-        <li>
-          <a href="./summary?query=bag backpack&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Bag</a>
-        </li>
-        <li>
-          <a href="./summary?query=shoos&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">Shoos</a>
+          <a href="./summary?query=shoos&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">
+              Shoos</a>
         </li>
 
         <%--<li>--%>

@@ -1,12 +1,12 @@
 <head>
   <%--<meta charset="utf-8">--%>
-  <%--<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>--%>
+  <meta http-equiv="Content-Type" content="text/html; charset=euc-kr"/>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>${originalQuery} - ${title}</title>
+  <title>${originalQuery} - ${title} - 가나다라 </title>
 
   <!-- Bootstrap Core CSS -->
   <link href="/SearchES/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
