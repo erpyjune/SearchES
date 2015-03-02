@@ -139,7 +139,7 @@ public class RequestParam {
 
         requestParamValidator();
 
-        logger.info("original query : " + originalQuery);
+        logger.info(" original query : " + originalQuery);
     }
 
 
