@@ -133,7 +133,8 @@ public class RequestParam {
         displayType = request.getParameter("display_type");
         String q = request.getParameter("query");
         if (q!=null) {
-            originalQuery = new String(q.getBytes("ISO-8859-1"),"UTF-8");
+//            originalQuery = new String(q.getBytes("ISO-8859-1"),"UTF-8");
+            originalQuery = q;
             //originalQuery = new String(request.getParameter("query").getBytes("ISO-8859-1"), "UTF-8");
         }
 

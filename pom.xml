@@ -3,11 +3,8 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.springapp</groupId>
     <artifactId>SearchES</artifactId>
-    <packaging>pom</packaging>
+    <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
-    <modules>
-        <module>../Crawler/PTTest</module>
-    </modules>
     <name>SearchES</name>
 
     <properties>
