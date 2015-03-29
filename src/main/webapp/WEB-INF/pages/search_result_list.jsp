@@ -14,10 +14,8 @@
 <c:forEach var="list" items="${searchList}">
 
 <div class="row">
-  <div class="col-md-7">
-    <!-- <a href="'.$link.'" target="_new"> -->
-    <img class="img-responsive" src="${list.getThumbUrl()}" alt="${list.getProductName()}">
-    <!-- </a> -->
+  <div class="col-md-8">
+    <img class="img-responsive" src="${list.getThumbUrl()}" alt="${list.getProductName()}" height="200" width="300">
   </div>
 
   <div class="col-md-4">
