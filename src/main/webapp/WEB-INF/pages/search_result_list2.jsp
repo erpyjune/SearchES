@@ -8,7 +8,7 @@
     <div class="col-lg-3 col-md-4 col-xs-6 thumb">
         <div class="thumbnail right-caption span4">
             <a class="thumbnail" href="${list.getContentUrl()}" target="_new">
-                <img class="img-responsive" src="${list.getThumbUrl()}" alt="${list.getProductName()}" height="110" width="110">
+                <img class="img-responsive" src="${list.getThumbUrl()}" alt="${list.getProductName()}"  style="width: auto; height: auto;">
                 <div class="caption">
                     <del><small>${list.getOrgPrice()}</small></del> -> ${list.getSalePrice()}<small> <br> [${list.getCpName()}]</small>
                 </div>
