@@ -2,7 +2,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="s" uri="http://www.springframework.org/tags"%>
 <%@ page session="false" %>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="en">
 <head>
@@ -62,7 +61,7 @@
 <!-- NAVBAR
 ================================================== -->
 <body>
-<%@include file="./top_menu.jsp"%>
+<%@include file="./top_menu_social.jsp"%>
 <%@include file="./search_box.jsp"%>
 <%--<h1 style="margin-top:150px" align="center">Outdoors Search Navigation</h1>--%>
 <div class="container marketing">
