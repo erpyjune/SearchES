@@ -59,27 +59,20 @@
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 </head>
 <!-- NAVBAR
-================================================== -->
+    ================================================== -->
 <body>
-<%@include file="./top_menu_social.jsp"%>
+<%@include file="./top_menu_outdoor.jsp"%>
 <%@include file="./search_box.jsp"%>
-<%--<h1 style="margin-top:150px" align="center">Outdoors Search Navigation</h1>--%>
+<!-- search list
+    ================================================== -->
 <div class="container marketing">
     <section id="blog-landing">
-        <%--<c:forEach var="list" items="${searchList}">--%>
-            <%--<article class="white-panel">--%>
-                <%--<img src="${list.getThumbUrl()}" alt="${list.getProductName()}">--%>
-                <%--<h1><a href="${list.getContentUrl()}" target="_new">${list.getBrandName()} ${list.getProductName()}</a></h1>--%>
-                <%--<p><del><small>${list.getOrgPrice()}</small></del> -> ${list.getSalePrice()}<small> <br> [${list.getCpName()}]</small></p>--%>
-            <%--</article>--%>
-        <%--</c:forEach>--%>
     </section>
 </div>
 
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<%--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>--%>
 <script src="/SearchES/resources/bootstrap/js/jquery-1.11.0.js"></script>
 <script src="/SearchES/resources/bootstrap/js/bootstrap.min.js"></script>
 <script src="/SearchES/resources/new1/pinterest_grid.js"></script>
@@ -91,7 +84,7 @@
             padding_x: 10,
             padding_y: 10,
             margin_bottom: 50,
-            single_column_breakpoint: 700
+//            single_column_breakpoint: 700
         });
     });
 
@@ -181,6 +174,6 @@
     //window.onLoad = lastPostLoad;
 
 </script>
-
+<%@include file="./footer.jsp"%>
 </body>
 </html>

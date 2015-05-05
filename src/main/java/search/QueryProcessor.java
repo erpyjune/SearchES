@@ -123,11 +123,12 @@ public class QueryProcessor {
 //                "\"highlight\": {\"fields\" : {\"product_name\" : {},\"brand_name\": {}}}}";
 
         String urlPart = "http://localhost:9200/shop/okmall/_search?source=";
-        String queryPart = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
-        String typePart        = String.format("\"type\":\"%s\",", rp.getSearchType());
-        String operatorPart    = String.format("\"operator\" : \"%s\",", rp.getOperator());
-        String searchFieldPart = "\"fields\":[ \"product_name^3\", \"brand_name^1\", \"keyword^3\" ]}},";
-        String fromSizePart = String.format("\"from\" : %s,\"size\" : %s,", rp.getFrom(), rp.getSize());
+        String queryPart             = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
+        String typePart              = String.format("\"type\":\"%s\",", rp.getSearchType());
+        String operatorPart          = String.format("\"operator\" : \"%s\",", rp.getOperator());
+        String searchAnalyzerPart    = String.format("\"analyzer\" : \"%s\",", "my_search_analyzer");
+        String searchFieldPart       = "\"fields\":[ \"product_name^5\", \"brand_name^1\", \"keyword^3\" ]}},";
+        String fromSizePart          = String.format("\"from\" : %s,\"size\" : %s,", rp.getFrom(), rp.getSize());
         String sortPart="";
         if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
 //            String sortPart = "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}],";
@@ -140,6 +141,7 @@ public class QueryProcessor {
         sb.append(URLEncoder.encode(queryPart, "UTF-8"));
         sb.append(URLEncoder.encode(typePart, "UTF-8"));
         sb.append(URLEncoder.encode(operatorPart, "UTF-8"));
+        sb.append(URLEncoder.encode(searchAnalyzerPart, "UTF-8"));
         sb.append(URLEncoder.encode(searchFieldPart,"UTF-8"));
         sb.append(URLEncoder.encode(fromSizePart,"UTF-8"));
         if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {

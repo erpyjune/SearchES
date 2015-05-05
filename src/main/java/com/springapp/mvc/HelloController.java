@@ -256,5 +256,4 @@ public class HelloController {
 
         return "new2/search_ajax_result";
     }
-
 }
