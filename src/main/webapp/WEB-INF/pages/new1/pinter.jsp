@@ -100,7 +100,6 @@
 
     var pstate = 0; //ajax 진행중값
     function lastPostLoad(){
-
         var from = getQueryVariable('from');
         var size = getQueryVariable('size');
         var operator = getQueryVariable('operator');

@@ -10,6 +10,7 @@ public class SearchResultItem {
     private String brandName;
     private String contentUrl;
     private String thumbUrl;
+    private String thumbUrlBig;
     private String orgPrice;
     private String salePrice;
     private String salePer;
@@ -63,6 +64,14 @@ public class SearchResultItem {
 
     public void setThumbUrl(String thumbUrl) {
         this.thumbUrl = thumbUrl;
+    }
+
+    public String getThumbUrlBig() {
+        return thumbUrlBig;
+    }
+
+    public void setThumbUrlBig(String thumbUrlBig) {
+        this.thumbUrlBig = thumbUrlBig;
     }
 
     public String getOrgPrice() {
