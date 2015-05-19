@@ -26,10 +26,9 @@ public class HelloController {
     public String summary(HttpServletRequest request, ModelMap modelMap) throws Exception {
         QueryProcessor qp = new QueryProcessor();
         RequestParam rp = new RequestParam();
-        SearchResult sr = new SearchResult();
+        HashMap<String, Object> pageMap;
+        SearchResult sr;
         SearchES se = new SearchES();
-        MakeModelMap mmm = new MakeModelMap();
-        ModelMap model = null;
 
         // request param extract..
         rp.paramParser(request);
@@ -47,7 +46,6 @@ public class HelloController {
         sr = se.getSearchResult(se.getCrawlData());
 
         // make page navigation...
-        HashMap<String, Object> pageMap = new HashMap<String, Object>();
         pageMap = qp.makePageNavigate(rp, sr);
 
         modelMap.addAttribute("searchList", sr.getSearchResultItems());
@@ -73,10 +71,9 @@ public class HelloController {
     public String pinter(HttpServletRequest request, ModelMap modelMap) throws Exception {
         QueryProcessor qp = new QueryProcessor();
         RequestParam rp = new RequestParam();
-        SearchResult sr = new SearchResult();
+        SearchResult sr;
+        HashMap<String, Object> pageMap;
         SearchES se = new SearchES();
-        MakeModelMap mmm = new MakeModelMap();
-        ModelMap model = null;
 
         // request param extract..
         rp.paramParser(request);
@@ -94,7 +91,6 @@ public class HelloController {
         sr = se.getSearchResult(se.getCrawlData());
 
         // make page navigation...
-        HashMap<String, Object> pageMap = new HashMap<String, Object>();
         pageMap = qp.makePageNavigate(rp, sr);
 
         modelMap.addAttribute("searchList", sr.getSearchResultItems());
@@ -120,10 +116,9 @@ public class HelloController {
     public String pinAjax(HttpServletRequest request, ModelMap modelMap) throws Exception {
         QueryProcessor qp = new QueryProcessor();
         RequestParam rp = new RequestParam();
-        SearchResult sr = new SearchResult();
+        HashMap<String, Object> pageMap;
         SearchES se = new SearchES();
-        MakeModelMap mmm = new MakeModelMap();
-        ModelMap model = null;
+        SearchResult sr;
 
         // request param extract..
         rp.paramParser(request);
@@ -141,7 +136,6 @@ public class HelloController {
         sr = se.getSearchResult(se.getCrawlData());
 
         // make page navigation...
-        HashMap<String, Object> pageMap = new HashMap<String, Object>();
         pageMap = qp.makePageNavigate(rp, sr);
 
         modelMap.addAttribute("searchList", sr.getSearchResultItems());
@@ -167,10 +161,8 @@ public class HelloController {
     public String search3(HttpServletRequest request, ModelMap modelMap) throws Exception {
         QueryProcessor qp = new QueryProcessor();
         RequestParam rp = new RequestParam();
-        SearchResult sr = new SearchResult();
+        SearchResult sr;
         SearchES se = new SearchES();
-        MakeModelMap mmm = new MakeModelMap();
-        ModelMap model = null;
 
         // request param extract..
         rp.paramParser(request);
@@ -188,7 +180,7 @@ public class HelloController {
         sr = se.getSearchResult(se.getCrawlData());
 
         // make page navigation...
-        HashMap<String, Object> pageMap = new HashMap<String, Object>();
+        HashMap<String, Object> pageMap;
         pageMap = qp.makePageNavigate(rp, sr);
 
         modelMap.addAttribute("searchList", sr.getSearchResultItems());
@@ -214,10 +206,9 @@ public class HelloController {
     public String ajaxSearch(HttpServletRequest request, ModelMap modelMap) throws Exception {
         QueryProcessor qp = new QueryProcessor();
         RequestParam rp = new RequestParam();
-        SearchResult sr = new SearchResult();
+        HashMap<String, Object> pageMap;
         SearchES se = new SearchES();
-        MakeModelMap mmm = new MakeModelMap();
-        ModelMap model = null;
+        SearchResult sr;
 
         // request param extract..
         rp.paramParser(request);
@@ -235,7 +226,6 @@ public class HelloController {
         sr = se.getSearchResult(se.getCrawlData());
 
         // make page navigation...
-        HashMap<String, Object> pageMap = new HashMap<String, Object>();
         pageMap = qp.makePageNavigate(rp, sr);
 
         modelMap.addAttribute("searchList", sr.getSearchResultItems());

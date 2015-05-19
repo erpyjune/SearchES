@@ -133,7 +133,7 @@ public class SearchES {
         reponseCode = closeableHttpResponse.getStatusLine().getStatusCode();
 
         try {
-            HttpEntity httpEntity = closeableHttpResponse.getEntity();
+//            HttpEntity httpEntity = closeableHttpResponse.getEntity();
             BufferedReader rd = new BufferedReader(
                     new InputStreamReader(closeableHttpResponse.getEntity().getContent(), crawlEncoding));
 

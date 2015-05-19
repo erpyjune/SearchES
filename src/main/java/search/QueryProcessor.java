@@ -114,6 +114,7 @@ public class QueryProcessor {
     }
 
 
+    /////////////////////////////////////////////////////////////////////////
     public void makeQueryJsonParam(RequestParam rp) throws Exception {
 //        String str = "http://localhost:9200/shop/okmall/_search?source=" +
 //                "{\"query\" : {\"multi_match\": {\"query\":\"jacket\",\"type\":\"best_fields\",\"operator\" : \"and\"," +
@@ -154,6 +155,7 @@ public class QueryProcessor {
     }
 
 
+    /////////////////////////////////////////////////////////////////////////
     public HashMap<String, Object> makePageNavigate(RequestParam rp, SearchResult sr) throws Exception {
         HashMap<String, Object> map = new HashMap<String, Object>();
 
