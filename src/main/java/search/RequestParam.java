@@ -21,7 +21,7 @@ public class RequestParam {
     private String searchQuery;
     private String searchUrlParam;
     private HashMap<String, Object> queryParamList;
-    private static final String prefixUrl = "http://localhost:9200/shop/okmall/_search?pretty=true&";
+    private static final String prefixUrl = "http://summarynode.cafe24.com:9200/shop/okmall/_search?pretty=true&";
 
     public static Logger getLogger() {
         return logger;

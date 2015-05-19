@@ -26,7 +26,7 @@ public class QueryProcessor {
     private String searchQueryParam;
     private HashMap<String, Object> queryParamList;
 
-    private final String prefixUrl = "http://localhost:9200/shop/okmall/_search?pretty=true&";
+    private final String prefixUrl = "http://summarynode.cafe24.com:9200/shop/okmall/_search?pretty=true&";
 
 
     public String getFrom() {
@@ -122,7 +122,7 @@ public class QueryProcessor {
 //                "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
 //                "\"highlight\": {\"fields\" : {\"product_name\" : {},\"brand_name\": {}}}}";
 
-        String urlPart = "http://localhost:9200/shop/okmall/_search?source=";
+        String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
         String queryPart             = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
         String typePart              = String.format("\"type\":\"%s\",", rp.getSearchType());
         String operatorPart          = String.format("\"operator\" : \"%s\",", rp.getOperator());
