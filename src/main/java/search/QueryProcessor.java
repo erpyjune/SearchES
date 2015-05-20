@@ -128,7 +128,7 @@ public class QueryProcessor {
         String typePart              = String.format("\"type\":\"%s\",", rp.getSearchType());
         String operatorPart          = String.format("\"operator\" : \"%s\",", rp.getOperator());
         String searchAnalyzerPart    = String.format("\"analyzer\" : \"%s\",", "my_search_analyzer");
-        String searchFieldPart       = "\"fields\":[ \"product_name^5\", \"brand_name^1\", \"keyword^3\" ]}},";
+        String searchFieldPart       = "\"fields\":[ \"product_name^10\", \"brand_name^1\", \"keyword^5\" ]}},";
         String fromSizePart          = String.format("\"from\" : %s,\"size\" : %s,", rp.getFrom(), rp.getSize());
         String sortPart="";
         if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
