@@ -10,7 +10,7 @@ import java.util.HashMap;
  */
 public class RequestParam {
     private static Logger logger = Logger.getLogger(RequestParam.class.getName());
-    private String from;
+    private String from=null;
     private String size;
     private String sortField;
     private String sortOption;
@@ -125,6 +125,8 @@ public class RequestParam {
 
     public void paramParser(HttpServletRequest request) throws  Exception {
         from = request.getParameter("from");
+        if (from==null) from = "0";
+
         size = request.getParameter("size");
         sortField = request.getParameter("sort_field");
         sortOption = request.getParameter("sort_option");

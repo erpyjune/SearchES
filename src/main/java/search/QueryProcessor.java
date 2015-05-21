@@ -155,7 +155,7 @@ public class QueryProcessor {
     }
 
 
-    /////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////
     public HashMap<String, Object> makePageNavigate(RequestParam rp, SearchResult sr) throws Exception {
         HashMap<String, Object> map = new HashMap<String, Object>();
 
@@ -193,6 +193,7 @@ public class QueryProcessor {
     }
 
 
+    ////////////////////////////////////////////////////////////////////////////////////////////
     public static void main(String[] args) {
         String query = "자켓";
 
