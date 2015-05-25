@@ -66,8 +66,8 @@
 <!-- search list
     ================================================== -->
 <div class="container marketing">
-    <section id="blog-landing">
-    </section>
+    <section id="blog-landing"></section>
+    <%@include file="./footer.jsp"%>
 </div>
 
 <!-- Bootstrap core JavaScript
@@ -174,6 +174,5 @@
     //window.onLoad = lastPostLoad;
 
 </script>
-<%@include file="./footer.jsp"%>
 </body>
 </html>
