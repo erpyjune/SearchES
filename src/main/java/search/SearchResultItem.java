@@ -4,18 +4,18 @@ package search;
  * Created by baeonejune on 15. 1. 4..
  */
 public class SearchResultItem {
-    private String score;
-    private String docid;
-    private String productName;
-    private String brandName;
-    private String contentUrl;
-    private String thumbUrl;
-    private String thumbUrlBig;
-    private String orgPrice;
-    private String salePrice;
-    private String salePer;
-    private String cpName;
-    private String keyWord;
+    public String score;
+    public String docid;
+    public String productName;
+    public String brandName;
+    public String contentUrl;
+    public String thumbUrl;
+    public String thumbUrlBig;
+    public String orgPrice;
+    public String salePrice;
+    public String salePer;
+    public String cpName;
+    public String keyWord;
 
 
     public String getDocid() {
