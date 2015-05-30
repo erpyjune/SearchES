@@ -14,6 +14,15 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="./search?query=텐트 타프 등산복 배낭&size=20&from=0&display_type=${displayType}&operator=or">OutdoorLife&You</a>
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <input type="text" name="query" class="form-control" placeholder="Search">
+            </div>
+            <button type="submit" class="btn btn-default">검색</button>
+            <input type="hidden" name="size" value="20">
+            <input type="hidden" name="from" value="0">
+            <input type="hidden" name="operator" value="or">
+        </form>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">

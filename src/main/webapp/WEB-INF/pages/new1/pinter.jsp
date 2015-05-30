@@ -62,7 +62,7 @@
     ================================================== -->
 <body>
 <%@include file="./top_menu_outdoor.jsp"%>
-<%@include file="./search_box.jsp"%>
+<%--<%@include file="./search_box.jsp"%>--%>
 <!-- search list
     ================================================== -->
 <div class="container marketing">
