@@ -125,8 +125,8 @@
             $.ajax({
                 type :"GET",
                 data :"size="+size+"&from="+next_from+'&operator='+operator+'&sort_option='+sort_option+'&sort_field='+sort_field,
-                url : "http://summarynode.cafe24.com/SearchES/pin_ajax?query="+query,
-//                url : "http://summarynode.com:8080/SearchES/pin_ajax?query="+query,
+//                url : "http://summarynode.cafe24.com/SearchES/pin_ajax?query="+query,
+                url : "http://summarynode.com:8080/SearchES/pin_ajax?query="+query,
                 success: function (data){
                     if(data=="false"){
                         alert("데이터를 로드 하지 못하였습니다.");
