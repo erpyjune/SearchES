@@ -338,4 +338,96 @@ public class HelloController {
 
         return "odsearch/odsearch_ajax";
     }
+
+    /////////////// odsearch2 ////////////////
+    @RequestMapping("/odsearch2")
+    public String odsearch2(HttpServletRequest request, ModelMap modelMap) throws Exception {
+        QueryProcessor qp = new QueryProcessor();
+        RequestParam rp = new RequestParam();
+        SearchResult sr;
+        HashMap<String, Object> pageMap;
+        SearchES se = new SearchES();
+
+        // request param extract..
+        rp.paramParser(request);
+
+        // make query string...
+        qp.makeQueryJsonParam(rp);
+
+        se.setCrawlUrl(rp.getSearchUrlParam());
+        se.setCrawlEncoding("utf-8");
+
+        // searching...
+        se.search();
+
+        // parsing result...
+        sr = se.getSearchResult(se.getCrawlData());
+
+        // make page navigation...
+        pageMap = qp.makePageNavigate(rp, sr);
+
+        modelMap.addAttribute("searchList", sr.getSearchResultItems());
+        modelMap.addAttribute("pageMap", pageMap);
+        modelMap.addAttribute("title","Good Luck!");
+        modelMap.addAttribute("searchTotalCount",sr.getSearchResultHeader().getTotalResultCount());
+        modelMap.addAttribute("searchListCount",sr.getSearchResultHeader().getListCount());
+
+        modelMap.addAttribute("displayType", rp.getDisplayType());
+        modelMap.addAttribute("sortField", rp.getSortField());
+        modelMap.addAttribute("sortOption", rp.getSortOption());
+        modelMap.addAttribute("operator", rp.getOperator());
+
+        modelMap.addAttribute("from",rp.getFrom());
+        modelMap.addAttribute("size",rp.getSize());
+        modelMap.addAttribute("query",rp.getSearchQuery());
+        modelMap.addAttribute("originalQuery", rp.getOriginalQuery());
+
+        return "odsearch2/main";
+    }
+
+
+    @RequestMapping("/odsearch2_ajax")
+    public String odsearch2AJAX(HttpServletRequest request, ModelMap modelMap) throws Exception {
+        QueryProcessor qp = new QueryProcessor();
+        RequestParam rp = new RequestParam();
+        HashMap<String, Object> pageMap;
+        SearchES se = new SearchES();
+        SearchResult sr;
+
+        // request param extract..
+        rp.paramParser(request);
+
+        // make query string...
+        qp.makeQueryJsonParam(rp);
+
+        se.setCrawlUrl(rp.getSearchUrlParam());
+        se.setCrawlEncoding("utf-8");
+
+        // searching...
+        se.search();
+
+        // parsing result...
+        sr = se.getSearchResult(se.getCrawlData());
+
+        // make page navigation...
+        pageMap = qp.makePageNavigate(rp, sr);
+
+        modelMap.addAttribute("searchList", sr.getSearchResultItems());
+        modelMap.addAttribute("pageMap", pageMap);
+        modelMap.addAttribute("title","Good Luck!");
+        modelMap.addAttribute("searchTotalCount",sr.getSearchResultHeader().getTotalResultCount());
+        modelMap.addAttribute("searchListCount",sr.getSearchResultHeader().getListCount());
+
+        modelMap.addAttribute("displayType", rp.getDisplayType());
+        modelMap.addAttribute("sortField", rp.getSortField());
+        modelMap.addAttribute("sortOption", rp.getSortOption());
+        modelMap.addAttribute("operator", rp.getOperator());
+
+        modelMap.addAttribute("from",rp.getFrom());
+        modelMap.addAttribute("size",rp.getSize());
+        modelMap.addAttribute("query",rp.getSearchQuery());
+        modelMap.addAttribute("originalQuery", rp.getOriginalQuery());
+
+        return "odsearch2/ajax";
+    }
 }

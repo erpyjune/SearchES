@@ -23,6 +23,11 @@
   <!-- Custom CSS -->
   <link href="/SearchES/resources/odsearch/thumbnail-gallery.css" rel="stylesheet">
 
+  <!-- for waterfall ux -->
+  <link href="http://tympanus.net/Development/GridLoadingEffects/css/default.css" rel="stylesheet">
+  <link href="http://tympanus.net/Development/GridLoadingEffects/css/component.css" rel="stylesheet">
+  <script src="http://tympanus.net/Development/GridLoadingEffects/js/modernizr.custom.js"></script>
+
   <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
   <!--[if lt IE 9]>
@@ -40,31 +45,26 @@
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
       <%--<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">--%>
-        <%--<span class="sr-only">Toggle navigation</span>--%>
-        <%--<span class="icon-bar"></span>--%>
-        <%--<span class="icon-bar"></span>--%>
-        <%--<span class="icon-bar"></span>--%>
+      <%--<span class="sr-only">Toggle navigation</span>--%>
+      <%--<span class="icon-bar"></span>--%>
+      <%--<span class="icon-bar"></span>--%>
+      <%--<span class="icon-bar"></span>--%>
       <%--</button>--%>
       <a class="navbar-brand" href="#">SummaryNode</a>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" name="query" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">검색</button>
-        <input type="hidden" name="size" value="20">
-        <input type="hidden" name="from" value="0">
-        <input type="hidden" name="operator" value="or">
-      </form>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <%--<form class="navbar-form navbar-left" role="search">--%>
-          <%--<div class="form-group">--%>
-            <%--<input type="text" class="form-control" placeholder="Search">--%>
-          <%--</div>--%>
-          <%--<button type="submit" class="btn btn-default">검색</button>--%>
-        <%--</form>--%>
+        <form class="navbar-form navbar-left" role="search" id="search_form">
+          <div class="form-group">
+            <input type="text" name="query" class="form-control" placeholder="Search">
+          </div>
+          <button type="submit" class="btn btn-default">검색</button>
+          <input type="hidden" name="size" value="39">
+          <input type="hidden" name="from" value="0">
+          <input type="hidden" name="operator" value="or">
+        </form>
+
 
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">등산복<span class="caret"></span></a>
@@ -197,99 +197,79 @@
 </nav>
 
 
-<!-- Page Content -->
 <div class="container">
 
   <div class="row">
 
-    <div class="col-lg-12">
-      <h1 class="page-header">Thumbnail Gallery</h1>
-    </div>
+
+      <!-- ================ 검색결과 시작 ================== -->
+      <div class="col-lg-12">
+      <ul class="grid effect-2" id="grid">
+        <c:forEach var="list" items="${searchList}">
+          <li><a href="${list.getContentUrl()}"><img src="${list.getThumbUrl()}" onerror="this.src='http://summarynode.cafe24.com/SearchES/resources/images/no_detail_img.gif'"></a></li>
 
 
-
-
-<!-- ================ 검색결과 시작 ================== -->
-<c:forEach var="list" items="${searchList}">
-      <div class="col-lg-3 col-md-4 col-xs-6 thumb">
-          <a class="thumbnail" href="${list.getContentUrl()}">
-              <img class="img-responsive" src="${list.getThumbUrl()}" alt="${list.getProductName()} onerror="this.src='http://summarynode.cafe24.com/SearchES/resources/images/no_detail_img.gif'">
-          </a>
-          <div class="caption">
-              <c:choose>
-                <c:when test="${fn:length(list.productName) <= 26}">
-                    <h5>${list.productName}</h5>
-                </c:when>
-                <c:otherwise>
-                    <h5>${fn:substring(list.productName,0,26)}...</h5>
-                </c:otherwise>
-              </c:choose>
-
-              <c:choose>
-                <c:when test="${list.getOrgPrice()!=list.getSalePrice()}">
-                    <p><del><small>${list.getOrgPrice()}</small></del> -> <span class="label label-success">${list.getSalePrice()}</span>
-                </c:when>
-                <c:otherwise>
-                    <p><span class="label label-success">${list.getSalePrice()}</span>
-                </c:otherwise>
-              </c:choose>
-                  &nbsp;&nbsp;<small><span class="badge">${list.getCpName()}</span></small></p>
-              <p>
-                  <a href="${list.getContentUrl()}" class="btn btn-primary" target="_new">Buy Now!</a> <a href="#" class="btn btn-default">More Info</a>
-              </p>
-          </div>
+          <%--<article class="white-panel" id="listitem" nfrom="${pageMap.nextPageFrom}">--%>
+          <%--<img src="${list.getThumbUrl()}" alt="${list.getProductName()}" onerror="this.src='http://summarynode.cafe24.com/SearchES/resources/images/no_detail_img.gif'">--%>
+          <%--<h1><a href="${list.getContentUrl()}" target="_new">${list.getBrandName()} ${list.getProductName()}</a></h1>--%>
+          <%--<c:choose>--%>
+          <%--<c:when test="${list.getOrgPrice()!=list.getSalePrice()}">--%>
+          <%--<p><del><small>${list.getOrgPrice()}</small></del> -> <span class="label label-success">${list.getSalePrice()}</span>--%>
+          <%--</c:when>--%>
+          <%--<c:otherwise>--%>
+          <%--<p><span class="label label-success">${list.getSalePrice()}</span>--%>
+          <%--</c:otherwise>--%>
+          <%--</c:choose>--%>
+          <%--&nbsp;&nbsp;<small><span class="badge">${list.getCpName()}</span></small></p>--%>
+          <%--</article>--%>
+        </c:forEach>
+      </ul>
       </div>
-</c:forEach>
       <!-- ================ 검색결과 끝 ================== -->
 
 
-
-
-
-  </div> <!-- //end div.row -->
-
-  <!-- Pagination -->
-  <div class="row text-center">
-    <div class="col-lg-12">
-      <ul class="pagination">
-        <li>
-          <a href="#">&laquo;</a>
-        </li>
-        <li class="active">
-          <a href="#">1</a>
-        </li>
-        <li>
-          <a href="#">2</a>
-        </li>
-        <li>
-          <a href="#">3</a>
-        </li>
-        <li>
-          <a href="#">4</a>
-        </li>
-        <li>
-          <a href="#">5</a>
-        </li>
-        <li>
-          <a href="#">&raquo;</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-  <!-- /.row -->
-
-
-  <hr>
-
-
-  <!-- Footer -->
-  <footer>
-    <div class="row">
+    <!-- Pagination -->
+    <div class="row text-center">
       <div class="col-lg-12">
-        <p>Copyright &copy; Your Website 2014</p>
+        <ul class="pagination">
+          <li>
+            <a href="#">&laquo;</a>
+          </li>
+          <li class="active">
+            <a href="#">1</a>
+          </li>
+          <li>
+            <a href="#">2</a>
+          </li>
+          <li>
+            <a href="#">3</a>
+          </li>
+          <li>
+            <a href="#">4</a>
+          </li>
+          <li>
+            <a href="#">5</a>
+          </li>
+          <li>
+            <a href="#">&raquo;</a>
+          </li>
+        </ul>
       </div>
     </div>
-  </footer>
+    <!-- /.row -->
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="row">
+        <div class="col-lg-12">
+          <p>Copyright &copy; Your Website 2014</p>
+        </div>
+      </div>
+    </footer>
+
+  </div> <!-- // div "row" -->
 
 </div>
 <!-- /.container -->
@@ -299,46 +279,19 @@
 <script src="/SearchES/resources/odsearch/jquery.js"></script>
 <!-- Bootstrap Core JavaScript -->
 <script src="/SearchES/resources/odsearch/bootstrap.min.js"></script>
+<!-- for waterfall ux js -->
+<script src="http://tympanus.net/Development/GridLoadingEffects/js/masonry.pkgd.min.js"></script>
+<script src="http://tympanus.net/Development/GridLoadingEffects/js/imagesloaded.js"></script>
+<script src="http://tympanus.net/Development/GridLoadingEffects/js/classie.js"></script>
+<script src="http://tympanus.net/Development/GridLoadingEffects/js/AnimOnScroll.js"></script>
+<%--<script src="http://tympanus.net/codrops/adpacks/demoad.js"></script>--%>
 
 <script>
-    $(document).ready(function(){
-        $('test').submit(function() {
-//        $("button").click(function() {
-            var from = getQueryVariable('from');
-            var size = getQueryVariable('size');
-            var operator = getQueryVariable('operator');
-            var sort_option = getQueryVariable('sort_option');
-            var sort_field = getQueryVariable('sort_field');
-            var next_from=0;
-            var query = getQueryVariable('query');
-
-            $.ajax({
-                type :'GET',
-                dataType:'html',
-                data :"size="+size+"&from="+next_from+'&operator='+operator+'&sort_option='+sort_option+'&sort_field='+sort_field,
-                url : "http://summarynode.com:8080/SearchES/odsearch_ajax?query="+query,
-                success: function(result) {
-                    $("#search-result").html(result);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    alert("code:"+jqXHR.status+"\n"+"message:"+jqXHR.responseText+"\n"+"error:"+errorThrown);
-                }
-            });
-        });
-    });
-
-    function getQueryVariable(variable) {
-        var query = window.location.search.substring(1);
-        var vars = query.split("&");
-        for (var i=0;i<vars.length;i++) {
-            var pair = vars[i].split("=");
-            if (pair[0] == variable) {
-                return pair[1];
-            }
-        }
-        return '';
-//        alert('Query Variable ' + variable + ' not found');
-    }
+  new AnimOnScroll( document.getElementById( 'grid' ), {
+    minDuration : 0.4,
+    maxDuration : 0.7,
+    viewportFactor : 0.2
+  } );
 </script>
 
 </body>

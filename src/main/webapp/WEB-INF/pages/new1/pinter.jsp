@@ -55,19 +55,41 @@
             -o-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
         }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(255, 255, 255, .8) url('http://summarynode.cafe24.com/SearchES/resources/images/loading34.gif') 50% 50% no-repeat;
+        }
+        /* When the body has the loading class, we turn
+            the scrollbar off with overflow:hidden */
+        body.loading {
+            overflow: hidden;
+        }
+
+        /* Anytime the body has the loading class, our
+           modal element will be visible */
+        body.loading .modal {
+            display: block;
+        }
     </style>
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 </head>
 <!-- NAVBAR
     ================================================== -->
 <body>
+<div class="modal"><!-- Place at bottom of page --></div>
 <%@include file="./top_menu_outdoor.jsp"%>
-<%--<%@include file="./search_box.jsp"%>--%>
+<%@include file="./search_box.jsp"%>
 <!-- search list
     ================================================== -->
 <div class="container marketing">
     <section id="blog-landing"></section>
-    <%@include file="./footer.jsp"%>
+    <%--<%@include file="./footer.jsp"%>--%>
 </div>
 
 <!-- Bootstrap core JavaScript
@@ -98,7 +120,6 @@
         lastPostLoad(); //스크롤페이징 ajax 호출 스크립트
     });
 
-    var pstate = 0; //ajax 진행중값
     function lastPostLoad(){
         var from = getQueryVariable('from');
         var size = getQueryVariable('size');
@@ -110,53 +131,47 @@
 
 //        alert('size:'+size+', from:'+next_from+', query:'+query);
 
-        if(pstate == 0){ /*진행중이 아닐경우*/
-            $("#LodingImage").html('<img src="/SearchES/resources/images/loading34.gif" style="margin:10px 0;" />');
-            pstate == 1; //진행중값으로 변경
-            if ($(".white-panel").attr("nfrom")) {
-                next_from = $(".white-panel:last").attr("nfrom");
+        $body = $("body");
+        $(document).on({
+            ajaxStart: function() { $body.addClass("loading");},
+            ajaxStop: function() { $body.removeClass("loading");}
+        });
 
-                if (navigator.userAgent.indexOf('iPhone') != -1) {
-                    setTimeout(scrollTo, 0, 0, $(window).scrollTop() + 30); //안드로이드 스크롤 아래이동
-                }else{
-                    window.scrollTo(0, $(window).scrollTop() + 30); //아이폰 스크롤 아래이동.
-                }
+        if ($(".white-panel").attr("nfrom")) {
+            next_from = $(".white-panel:last").attr("nfrom");
+
+            if (navigator.userAgent.indexOf('iPhone') != -1) {
+                setTimeout(scrollTo, 0, 0, $(window).scrollTop() + 30); //안드로이드 스크롤 아래이동
+            }else{
+                window.scrollTo(0, $(window).scrollTop() + 30); //아이폰 스크롤 아래이동.
             }
-            $.ajax({
-                type :"GET",
-                data :"size="+size+"&from="+next_from+'&operator='+operator+'&sort_option='+sort_option+'&sort_field='+sort_field,
-                url : "http://summarynode.cafe24.com/SearchES/pin_ajax?query="+query,
-//                url : "http://summarynode.com:8080/SearchES/pin_ajax?query="+query,
-                success: function (data){
-                    if(data=="false"){
-                        alert("데이터를 로드 하지 못하였습니다.");
-                        $("#LodingImage").empty();
-                        pstate = 0;
-                    }else if(data == ""){
-                        alert("더이상 목록이 존재 하지 않습니다.");
-                        $("#LodingImage").empty();
-                        pstate = 1;
-
-                    }else{
-                        if($(".white-panel").attr("nfrom")){
-//                            alert('more');
-                            $("#blog-landing").append(data);
-                        }else{ //첫실행일 경우li 없음
-//                            alert('first:');
-                            $('#blog-landing').append(data);
-                        }
-
-                        $("#LodingImage").empty();
-                        pstate = 0;
-                    }
-                },
-                error: function (){
-                    alert("서버 접속 오류! 잠시후 이용해 주세요.");
-                    $("#LodingImage").empty();
-                    pstate = 0;
-                }
-            });
         }
+        $.ajax({
+            type :"GET",
+            data :"size="+size+"&from="+next_from+'&operator='+operator+'&sort_option='+sort_option+'&sort_field='+sort_field,
+//                url : "http://summarynode.cafe24.com/SearchES/pin_ajax?query="+query,
+            url : "http://summarynode.com:8080/SearchES/pin_ajax?query="+query,
+            success: function (data){
+                if(data=="false"){
+                    alert("데이터를 로드 하지 못하였습니다.");
+                }else if(data == ""){
+                    alert("더이상 목록이 존재 하지 않습니다.");
+                }else{
+                    if($(".white-panel").attr("nfrom")){
+//                            alert('more');
+                        $("#blog-landing").append(data);
+                        $("#blog-landing").append("<hr> <h1> last pasge </h1>")
+                    }else{ //첫실행일 경우li 없음
+//                            alert('first:');
+                        $('#blog-landing').append(data);
+                        $("#blog-landing").append("<hr> <h1> last pasge </h1>")
+                    }
+                }
+            },
+            error: function (){
+                alert("서버 접속 오류! 잠시후 이용해 주세요.");
+            }
+        });
     }
 
     function getQueryVariable(variable) {
@@ -171,8 +186,10 @@
         return '';
 //        alert('Query Variable ' + variable + ' not found');
     }
-    //window.onLoad = lastPostLoad;
+
+    window.onLoad = lastPostLoad;
 
 </script>
+
 </body>
 </html>
