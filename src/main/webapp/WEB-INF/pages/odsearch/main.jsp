@@ -316,7 +316,8 @@
                 type :'GET',
                 dataType:'html',
                 data :"size="+size+"&from="+next_from+'&operator='+operator+'&sort_option='+sort_option+'&sort_field='+sort_field,
-                url : "http://summarynode.com:8080/SearchES/odsearch_ajax?query="+query,
+                url : "http://summarynode.cafe24.com/SearchES/odsearch_ajax?query="+query,
+//                url : "http://summarynode.com:8080/SearchES/odsearch_ajax?query="+query,
                 success: function(result) {
                     $("#search-result").html(result);
                 },

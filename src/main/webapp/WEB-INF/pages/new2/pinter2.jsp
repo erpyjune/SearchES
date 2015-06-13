@@ -54,8 +54,8 @@
             } else {
                 from = page * 20;
             }
-//            return 'http://summarynode.cafe24.com/SearchES/asearch?&operator=or&query='+query+'&size=20&from='+from;
-            return 'http://summarynode.com:8080/SearchES/asearch?&operator=or&query='+query+'&size=20&from='+from;
+            return 'http://summarynode.cafe24.com/SearchES/asearch?&operator=or&query='+query+'&size=20&from='+from;
+//            return 'http://summarynode.com:8080/SearchES/asearch?&operator=or&query='+query+'&size=20&from='+from;
         }
     });
 
