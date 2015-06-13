@@ -13,14 +13,13 @@ import java.util.Vector;
 @Controller
 @RequestMapping("/")
 public class HelloController {
-	@RequestMapping(method = RequestMethod.GET)
-	public String printWelcome(ModelMap model) throws Exception {
+    @RequestMapping(method = RequestMethod.GET)
+    public String index(ModelMap model) throws Exception {
 
-		model.addAttribute("message", "Hello world!");
+        model.addAttribute("message", "Hello world!");
 
-		return "hello";
-	}
-
+        return "hello";
+    }
 
     @RequestMapping("/summary")
     public String summary(HttpServletRequest request, ModelMap modelMap) throws Exception {

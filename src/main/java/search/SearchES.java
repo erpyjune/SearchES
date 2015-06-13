@@ -226,6 +226,7 @@ public class SearchES {
             searchResultItem.setBrandName(source.get("brand_name").textValue());
             searchResultItem.setContentUrl(source.get("url").textValue());
             searchResultItem.setThumbUrl(source.get("thumb").textValue());
+            searchResultItem.setThumbUrlBig(source.get("bthumb").textValue());
             searchResultItem.setOrgPrice(source.get("org_price").asText());
             searchResultItem.setSalePrice(source.get("sale_price").asText());
             searchResultItem.setSalePer(source.get("sale_per").asText());

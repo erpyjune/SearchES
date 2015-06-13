@@ -213,7 +213,7 @@
 <c:forEach var="list" items="${searchList}">
       <div class="col-lg-3 col-md-4 col-xs-6 thumb">
           <a class="thumbnail" href="${list.getContentUrl()}">
-              <img class="img-responsive" src="${list.getThumbUrl()}" alt="${list.getProductName()} onerror="this.src='http://summarynode.cafe24.com/SearchES/resources/images/no_detail_img.gif'">
+              <img class="img-responsive" src="${list.getThumbUrl()}" alt="${list.getProductName()} onerror="this.src='http://summarynode.cafe24.com/SearchES/resources/images/http://tympanus.net/Development/GridLoadingEffects/images'">
           </a>
           <div class="caption">
               <c:choose>

@@ -5,7 +5,7 @@
 
 <c:forEach var="list" items="${searchList}">
 <div class="item" >
-    <img src="${list.getThumbUrl()}" width="200" height="200">
+    <img src="${list.getThumbUrlBig()}" width="200" height="200" onerror="this.src='http://summarynode.cafe24.com/SearchES/resources/images/no_detail_img.gif'">
     <a href="${list.getContentUrl()}" target="_new">${list.getBrandName()} ${list.getProductName()}</a>
     <p><del><small>${list.getOrgPrice()}</small></del> -> ${list.getSalePrice()}<small> <br> [${list.getCpName()}]</small></p>
 </div>

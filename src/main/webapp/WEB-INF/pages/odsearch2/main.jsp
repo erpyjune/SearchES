@@ -206,11 +206,11 @@
       <div class="col-lg-12">
       <ul class="grid effect-2" id="grid">
         <c:forEach var="list" items="${searchList}">
-          <li><a href="${list.getContentUrl()}"><img src="${list.getThumbUrl()}" onerror="this.src='http://summarynode.cafe24.com/SearchES/resources/images/no_detail_img.gif'"></a></li>
+          <li><a href="${list.getContentUrl()}"><img src="${list.getThumbUrlBig()}" onerror="this.src='http://summarynode.cafe24.com/SearchES/resources/images/no_detail_img.gif'"></a></li>
 
 
           <%--<article class="white-panel" id="listitem" nfrom="${pageMap.nextPageFrom}">--%>
-          <%--<img src="${list.getThumbUrl()}" alt="${list.getProductName()}" onerror="this.src='http://summarynode.cafe24.com/SearchES/resources/images/no_detail_img.gif'">--%>
+          <%--<img src="${list.getThumbUrl()}" alt="${list.getProductName()}" onerror="this.src='http://summarynode.cafe24.com/SearchES/resources/images/http://tympanus.net/Development/GridLoadingEffects/images'">--%>
           <%--<h1><a href="${list.getContentUrl()}" target="_new">${list.getBrandName()} ${list.getProductName()}</a></h1>--%>
           <%--<c:choose>--%>
           <%--<c:when test="${list.getOrgPrice()!=list.getSalePrice()}">--%>

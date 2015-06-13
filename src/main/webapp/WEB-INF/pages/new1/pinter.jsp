@@ -55,16 +55,16 @@
             -o-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 1000;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background: rgba(255, 255, 255, .8) url('http://summarynode.cafe24.com/SearchES/resources/images/loading34.gif') 50% 50% no-repeat;
-        }
+        /*.modal {*/
+            /*display: none;*/
+            /*position: fixed;*/
+            /*z-index: 1000;*/
+            /*top: 0;*/
+            /*left: 0;*/
+            /*height: 100%;*/
+            /*width: 100%;*/
+            /*background: rgba(255, 255, 255, .8) url('http://summarynode.cafe24.com/SearchES/resources/images/loading34.gif') 50% 50% no-repeat;*/
+        /*}*/
         /* When the body has the loading class, we turn
             the scrollbar off with overflow:hidden */
         body.loading {
@@ -73,16 +73,15 @@
 
         /* Anytime the body has the loading class, our
            modal element will be visible */
-        body.loading .modal {
-            display: block;
-        }
+        /*body.loading .modal {*/
+            /*display: block;*/
+        /*}*/
     </style>
     <link href="http://www.jqueryscript.net/css/jquerysctipttop.css" rel="stylesheet" type="text/css">
 </head>
 <!-- NAVBAR
     ================================================== -->
 <body>
-<div class="modal"><!-- Place at bottom of page --></div>
 <%@include file="./top_menu_outdoor.jsp"%>
 <%@include file="./search_box.jsp"%>
 <!-- search list
@@ -149,8 +148,8 @@
         $.ajax({
             type :"GET",
             data :"size="+size+"&from="+next_from+'&operator='+operator+'&sort_option='+sort_option+'&sort_field='+sort_field,
-            url : "http://summarynode.cafe24.com/SearchES/pin_ajax?query="+query,
-//            url : "http://summarynode.com:8080/SearchES/pin_ajax?query="+query,
+//            url : "http://summarynode.cafe24.com/SearchES/pin_ajax?query="+query,
+            url : "http://summarynode.com:8080/SearchES/pin_ajax?query="+query,
             success: function (data){
                 if(data=="false"){
                     alert("데이터를 로드 하지 못하였습니다.");
