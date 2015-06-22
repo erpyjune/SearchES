@@ -10,16 +10,19 @@ import java.util.HashMap;
  */
 public class RequestParam {
     private static Logger logger = Logger.getLogger(RequestParam.class.getName());
-    private String from=null;
-    private String size;
-    private String sortField;
-    private String sortOption;
-    private String operator;
-    private String searchType;
-    private String originalQuery;
-    private String displayType;
-    private String searchQuery;
-    private String searchUrlParam;
+    private String from="";
+    private String size="";
+    private String sortField="";
+    private String sortOption="";
+    private String operator="";
+    private String searchType=""; // best_fields, cross_fields, most_fields
+    private String originalQuery="";
+    private String displayType="";
+    private String searchQuery="";
+    private String searchUrlParam="";
+    private String categorySearchType="";
+    private String cateName1="";
+    private String cateName2="";
     private HashMap<String, Object> queryParamList;
     private static final String prefixUrl = "http://summarynode.cafe24.com:9200/shop/okmall/_search?pretty=true&";
 
@@ -95,6 +98,30 @@ public class RequestParam {
         this.searchQuery = searchQuery;
     }
 
+    public String getCategorySearchType() {
+        return categorySearchType;
+    }
+
+    public void setCategorySearchType(String categorySearchType) {
+        this.categorySearchType = categorySearchType;
+    }
+
+    public String getCateName1() {
+        return cateName1;
+    }
+
+    public void setCateName1(String cateName1) {
+        this.cateName1 = cateName1;
+    }
+
+    public String getCateName2() {
+        return cateName2;
+    }
+
+    public void setCateName2(String cateName2) {
+        this.cateName2 = cateName2;
+    }
+
     public HashMap<String, Object> getQueryParamList() {
         return queryParamList;
     }
@@ -133,6 +160,9 @@ public class RequestParam {
         operator = request.getParameter("operator");
         searchType = request.getParameter("search_type");
         displayType = request.getParameter("display_type");
+        categorySearchType = request.getParameter("category_search_type");
+        cateName1 = request.getParameter("cate1");
+        cateName2 = request.getParameter("cate2");
         String q = request.getParameter("query");
         if (q!=null) {
 //            originalQuery = new String(q.getBytes("ISO-8859-1"),"UTF-8");
@@ -140,6 +170,8 @@ public class RequestParam {
 //            originalQuery = new String(request.getParameter("query").getBytes("ISO-8859-1"), "UTF-8");
         }
 
+        ///////////////////////////////////////
+        // parameter valid checker.
         requestParamValidator();
 
         logger.info(" original query : " + originalQuery);
@@ -202,6 +234,18 @@ public class RequestParam {
         }
         else {
             searchQuery = originalQuery;
+        }
+
+        // 카테고리 검색을 할지 일반 검색을 할지 이 parameter로 정해진다.
+        if (categorySearchType==null) {
+            categorySearchType="normal";
+        }
+        else {
+            if (!"normal".equals(categorySearchType) && "category".equals(categorySearchType) ) {
+                categorySearchType = "normal";
+            } else if ("category".equals(categorySearchType)) {
+                // TODO :: cate1, cate2 파라메터에 대해서 valid check 필요.
+            }
         }
     }
 }
