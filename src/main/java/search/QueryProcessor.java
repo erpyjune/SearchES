@@ -1,11 +1,8 @@
 package search;
 
-import org.apache.commons.codec.binary.StringUtils;
 import org.apache.log4j.Logger;
 
-import javax.servlet.http.HttpServletRequest;
 import java.net.URLEncoder;
-import java.util.ArrayList;
 import java.util.HashMap;
 
 /**
@@ -116,28 +113,30 @@ public class QueryProcessor {
 
     /////////////////////////////////////////////////////////////////////////
     public void makeQueryJsonParam(RequestParam rp) throws Exception {
-//        String str = "http://localhost:9200/shop/okmall/_search?source=" +
-//                "{\"query\" : {\"multi_match\": {\"query\":\"jacket\",\"type\":\"best_fields\",\"operator\" : \"and\"," +
-//                "\"fields\":[ \"product_name^2\", \"brand_name^1\", \"keyword^1\" ]}}," +
-//                "\"from\" : 0,\"size\" : 10," +
-//                "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
-//                "\"highlight\": {\"fields\" : {\"product_name\" : {},\"brand_name\": {}}}}";
+        String queryPart="";
+        String typePart="";
+        String operatorPart="";
+        String searchAnalyzerPart="";
+        String searchFieldPart="";
+        String fromSizePart="";
+        String sortPart="";
+        String highlightPart="";
 
         String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
 //        String urlPart = "http://summarynode.com:9200/shop/okmall/_search?source=";
-        String queryPart             = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
-        String typePart              = String.format("\"type\":\"%s\",", rp.getSearchType());
-        String operatorPart          = String.format("\"operator\" : \"%s\",", rp.getOperator());
-        String searchAnalyzerPart    = String.format("\"analyzer\" : \"%s\",", "my_search_analyzer");
-        String searchFieldPart       = "\"fields\":[ \"product_name^10\", \"brand_name^1\", \"keyword^5\" ]}},";
-        String fromSizePart          = String.format("\"from\" : %s,\"size\" : %s,", rp.getFrom(), rp.getSize());
-        String sortPart="";
+
+        queryPart             = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
+        typePart              = String.format("\"type\":\"%s\",", rp.getSearchType());
+        operatorPart          = String.format("\"operator\" : \"%s\",", rp.getOperator());
+        searchAnalyzerPart    = String.format("\"analyzer\" : \"%s\",", "my_search_analyzer");
+        searchFieldPart       = "\"fields\":[ \"product_name^10\", \"brand_name^1\", \"keyword^5\" ]}},";
+        fromSizePart          = String.format("\"from\" : %s,\"size\" : %s,", rp.getFrom(), rp.getSize());
         if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
 //            String sortPart = "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}],";
             sortPart = String.format("\"sort\" : [{\"%s\" : \"%s\"}],",rp.getSortField(), rp.getSortOption());
         }
 
-        String highlightPart = "\"highlight\": {\"fields\" : {\"product_name\" : {},\"brand_name\": {}}}}";
+        highlightPart = "\"highlight\": {\"fields\" : {\"product_name\" : {},\"brand_name\": {}}}}";
 
         StringBuilder sb = new StringBuilder(urlPart);
         sb.append(URLEncoder.encode(queryPart, "UTF-8"));
@@ -214,6 +213,5 @@ public class QueryProcessor {
         sb.append(highlightPart);
 
         System.out.println(sb.toString());
-
     }
 }
