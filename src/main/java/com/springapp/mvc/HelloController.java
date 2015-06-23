@@ -78,7 +78,14 @@ public class HelloController {
         rp.paramParser(request);
 
         // make query string...
-        qp.makeQueryJsonParam(rp);
+        if (!rp.getCategorySearchType().equals("category")) {
+            // normal search.
+            qp.makeQueryJsonParam(rp);
+        }
+        else {
+            // category search
+            qp.makeQueryJsonParamForCateSearch(rp);
+        }
 
         se.setCrawlUrl(rp.getSearchUrlParam());
         se.setCrawlEncoding("utf-8");

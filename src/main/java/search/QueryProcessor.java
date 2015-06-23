@@ -155,7 +155,92 @@ public class QueryProcessor {
     }
 
 
-    ////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////
+    public void makeQueryJsonParamForCateSearch(RequestParam rp) throws Exception {
+        String queryPart="";
+        String typePart="";
+        String operatorPart="";
+        String searchAnalyzerPart="";
+        String searchFieldPart="";
+        String fromSizePart="";
+        String sortPart="";
+        String highlightPart="";
+        String queryString="";
+
+        String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
+//        String urlPart = "http://summarynode.com:9200/shop/okmall/_search?source=";
+
+
+        String cate1Query ="{" +
+                "  \"query\": {" +
+                "    \"bool\": {" +
+                "      \"must\": [" +
+                "        { \"match\": { \"cate1\": \"%s\" }}" +
+                "      ]" +
+                "    }" +
+                "  }," +
+                "  \"from\" : %s," +
+                "  \"size\" : %s" +
+                "}";
+
+
+        String cate2Query ="{" +
+                "  \"query\": {" +
+                "    \"bool\": {" +
+                "      \"must\": [" +
+                "        { \"match\": { \"cate1\": \"%s\" }}," +
+                "        { \"match\": { \"cate2\": \"%s\" }}" +
+                "      ]" +
+                "    }" +
+                "  }," +
+                "  \"from\" : %s," +
+                "  \"size\" : %s" +
+                "}";
+
+        if (rp.getCateName1().length()>0 && rp.getCateName2().length()>0) {
+            queryString = String.format(cate1Query,rp.getCateName1(), rp.getCateName2(), rp.getFrom(), rp.getSize());
+
+        }
+        else if (rp.getCateName1().length()>0 && rp.getCateName2().length()==0) {
+            queryString = String.format(cate2Query,rp.getCateName1(), rp.getCateName2(), rp.getFrom(), rp.getSize());
+        }
+        else {
+            logger.error(String.format(" Category search param error : cate1(%s), cate2(%s) !!",
+                    rp.getCateName1(), rp.getCateName2()));
+            throw new RuntimeException();
+        }
+
+        queryPart             = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
+        typePart              = String.format("\"type\":\"%s\",", rp.getSearchType());
+        operatorPart          = String.format("\"operator\" : \"%s\",", rp.getOperator());
+        searchAnalyzerPart    = String.format("\"analyzer\" : \"%s\",", "my_search_analyzer");
+        searchFieldPart       = "\"fields\":[ \"product_name^10\", \"brand_name^1\", \"keyword^5\" ]}},";
+        fromSizePart          = String.format("\"from\" : %s,\"size\" : %s,", rp.getFrom(), rp.getSize());
+        if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
+//            String sortPart = "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}],";
+            sortPart = String.format("\"sort\" : [{\"%s\" : \"%s\"}],",rp.getSortField(), rp.getSortOption());
+        }
+
+        highlightPart = "\"highlight\": {\"fields\" : {\"product_name\" : {},\"brand_name\": {}}}}";
+
+        StringBuilder sb = new StringBuilder(urlPart);
+        sb.append(URLEncoder.encode(queryPart, "UTF-8"));
+        sb.append(URLEncoder.encode(typePart, "UTF-8"));
+        sb.append(URLEncoder.encode(operatorPart, "UTF-8"));
+        sb.append(URLEncoder.encode(searchAnalyzerPart, "UTF-8"));
+        sb.append(URLEncoder.encode(searchFieldPart,"UTF-8"));
+        sb.append(URLEncoder.encode(fromSizePart,"UTF-8"));
+        if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
+            sb.append(URLEncoder.encode(sortPart,"UTF-8"));
+        }
+        sb.append(URLEncoder.encode(highlightPart,"UTF-8"));
+
+        // 최종 검색할 url 셋팅.
+        rp.setSearchUrlParam(sb.toString());
+    }
+
+
+    ///////////////////////////////////////////////////////////////////////////////
     public HashMap<String, Object> makePageNavigate(RequestParam rp, SearchResult sr) throws Exception {
         HashMap<String, Object> map = new HashMap<String, Object>();
 
