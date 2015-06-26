@@ -157,14 +157,6 @@ public class QueryProcessor {
 
     ///////////////////////////////////////////////////////////////////////////////
     public void makeQueryJsonParamForCateSearch(RequestParam rp) throws Exception {
-        String queryPart="";
-        String typePart="";
-        String operatorPart="";
-        String searchAnalyzerPart="";
-        String searchFieldPart="";
-        String fromSizePart="";
-        String sortPart="";
-        String highlightPart="";
         String queryString="";
 
         String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
@@ -172,37 +164,38 @@ public class QueryProcessor {
 
 
         String cate1Query ="{" +
-                "  \"query\": {" +
-                "    \"bool\": {" +
-                "      \"must\": [" +
-                "        { \"match\": { \"cate1\": \"%s\" }}" +
-                "      ]" +
-                "    }" +
-                "  }," +
-                "  \"from\" : %s," +
-                "  \"size\" : %s" +
+                "\"query\":{" +
+                "\"bool\":{" +
+                "\"must\":[" +
+                "{\"match\":{\"cate1\":\"%s\"}}" +
+                "]" +
+                "}" +
+                "}," +
+                "\"from\":%s," +
+                "\"size\":%s" +
                 "}";
 
 
         String cate2Query ="{" +
-                "  \"query\": {" +
-                "    \"bool\": {" +
-                "      \"must\": [" +
-                "        { \"match\": { \"cate1\": \"%s\" }}," +
-                "        { \"match\": { \"cate2\": \"%s\" }}" +
-                "      ]" +
-                "    }" +
-                "  }," +
-                "  \"from\" : %s," +
-                "  \"size\" : %s" +
+                "\"query\":{" +
+                "\"bool\":{" +
+                "\"must\": [" +
+                "{\"match\":{\"cate1\":\"%s\"}}," +
+                "{\"match\":{\"cate2\":\"%s\"}}" +
+                "]" +
+                "}" +
+                "}," +
+                "\"from\" : %s," +
+                "\"size\" : %s" +
                 "}";
 
-        if (rp.getCateName1().length()>0 && rp.getCateName2().length()>0) {
-            queryString = String.format(cate1Query,rp.getCateName1(), rp.getCateName2(), rp.getFrom(), rp.getSize());
-
+        if (rp.getCateName1().length()>0 && rp.getCateName2().length()==0) {
+            queryString = String.format(cate1Query, rp.getCateName1(),rp.getFrom(),rp.getSize());
+            logger.info(" ## CATE-1 type");
         }
-        else if (rp.getCateName1().length()>0 && rp.getCateName2().length()==0) {
-            queryString = String.format(cate2Query,rp.getCateName1(), rp.getCateName2(), rp.getFrom(), rp.getSize());
+        else if (rp.getCateName1().length()>0 && rp.getCateName2().length()>0) {
+            queryString = String.format(cate2Query, rp.getCateName1(),rp.getCateName2(),rp.getFrom(),rp.getSize());
+            logger.info(" ## CATE-2 type");
         }
         else {
             logger.error(String.format(" Category search param error : cate1(%s), cate2(%s) !!",
@@ -210,33 +203,11 @@ public class QueryProcessor {
             throw new RuntimeException();
         }
 
-        queryPart             = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
-        typePart              = String.format("\"type\":\"%s\",", rp.getSearchType());
-        operatorPart          = String.format("\"operator\" : \"%s\",", rp.getOperator());
-        searchAnalyzerPart    = String.format("\"analyzer\" : \"%s\",", "my_search_analyzer");
-        searchFieldPart       = "\"fields\":[ \"product_name^10\", \"brand_name^1\", \"keyword^5\" ]}},";
-        fromSizePart          = String.format("\"from\" : %s,\"size\" : %s,", rp.getFrom(), rp.getSize());
-        if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
-//            String sortPart = "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}],";
-            sortPart = String.format("\"sort\" : [{\"%s\" : \"%s\"}],",rp.getSortField(), rp.getSortOption());
-        }
-
-        highlightPart = "\"highlight\": {\"fields\" : {\"product_name\" : {},\"brand_name\": {}}}}";
-
-        StringBuilder sb = new StringBuilder(urlPart);
-        sb.append(URLEncoder.encode(queryPart, "UTF-8"));
-        sb.append(URLEncoder.encode(typePart, "UTF-8"));
-        sb.append(URLEncoder.encode(operatorPart, "UTF-8"));
-        sb.append(URLEncoder.encode(searchAnalyzerPart, "UTF-8"));
-        sb.append(URLEncoder.encode(searchFieldPart,"UTF-8"));
-        sb.append(URLEncoder.encode(fromSizePart,"UTF-8"));
-        if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
-            sb.append(URLEncoder.encode(sortPart,"UTF-8"));
-        }
-        sb.append(URLEncoder.encode(highlightPart,"UTF-8"));
-
         // 최종 검색할 url 셋팅.
-        rp.setSearchUrlParam(sb.toString());
+        rp.setSearchUrlParam(urlPart + URLEncoder.encode(queryString,"UTF-8"));
+//        rp.setSearchUrlParam(urlPart + queryString);
+        logger.info(" Query : " + queryString);
+        logger.info(" queryString : " + rp.getSearchUrlParam());
     }
 
 
@@ -279,24 +250,29 @@ public class QueryProcessor {
 
 
     ////////////////////////////////////////////////////////////////////////////////////////////
-    public static void main(String[] args) {
-        String query = "자켓";
+    public static void main(String[] args) throws Exception {
+        SearchES se = new SearchES();
+        String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
+        String cate2Query ="{" +
+                "\"query\":{" +
+                "\"bool\":{" +
+                "\"must\": [" +
+                "{\"match\":{\"cate1\":\"001\"}}," +
+                "{\"match\":{\"cate2\":\"003\"}}" +
+                "]" +
+                "}" +
+                "}," +
+                "\"from\" : 0," +
+                "\"size\" : 20" +
+                "}";
 
-        String urlPart = "http://localhost:9200/shop/okmall/_search?source=";
-        String queryPart = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\"," +
-                "\"type\":\"best_fields\",\"operator\" : \"and\",", query);
-        String searchFieldPart = "\"fields\":[ \"product_name^2\", \"brand_name^1\", \"keyword^1\" ]}},";
-        String fromSizePart = String.format("\"from\" : %d,\"size\" : %d,", 0, 10);
-        String sortPart = "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}],";
-        String highlightPart = "\"highlight\": {\"fields\" : {\"product_name\" : {},\"brand_name\": {}}}}";
+        se.setCrawlUrl(urlPart + URLEncoder.encode(cate2Query,"UTF-8"));
+        se.setCrawlEncoding("utf-8");
 
-        StringBuilder sb = new StringBuilder(urlPart);
-        sb.append(queryPart);
-        sb.append(searchFieldPart);
-        sb.append(fromSizePart);
-        sb.append(sortPart);
-        sb.append(highlightPart);
+        // searching...
+        se.search();
 
-        System.out.println(sb.toString());
+        System.out.println(se.getCrawlData());
+        System.out.println("end!!");
     }
 }

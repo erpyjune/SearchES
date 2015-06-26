@@ -154,6 +154,7 @@ public class RequestParam {
         from = request.getParameter("from");
         if (from==null) from = "0";
 
+        String sss = request.getQueryString();
         size = request.getParameter("size");
         sortField = request.getParameter("sort_field");
         sortOption = request.getParameter("sort_option");
@@ -175,6 +176,11 @@ public class RequestParam {
         requestParamValidator();
 
         logger.info(" original query : " + originalQuery);
+        logger.info(" getQueryString : " + request.getQueryString());
+        logger.info(" category_search_type : " + categorySearchType);
+        logger.info(" cate1 : " + cateName1);
+        logger.info(" cate2 : " + cateName2);
+        logger.info(" =================================================");
     }
 
 
@@ -241,7 +247,7 @@ public class RequestParam {
             categorySearchType="normal";
         }
         else {
-            if (!"normal".equals(categorySearchType) && "category".equals(categorySearchType) ) {
+            if (!"normal".equals(categorySearchType) && !"category".equals(categorySearchType) ) {
                 categorySearchType = "normal";
             } else if ("category".equals(categorySearchType)) {
                 // TODO :: cate1, cate2 파라메터에 대해서 valid check 필요.

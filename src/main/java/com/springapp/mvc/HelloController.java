@@ -78,13 +78,13 @@ public class HelloController {
         rp.paramParser(request);
 
         // make query string...
-        if (!rp.getCategorySearchType().equals("category")) {
-            // normal search.
-            qp.makeQueryJsonParam(rp);
+        if (rp.getCategorySearchType().equals("category")) {
+            // category search.
+            qp.makeQueryJsonParamForCateSearch(rp);
         }
         else {
-            // category search
-            qp.makeQueryJsonParamForCateSearch(rp);
+            // normal search.
+            qp.makeQueryJsonParam(rp);
         }
 
         se.setCrawlUrl(rp.getSearchUrlParam());
@@ -114,6 +114,10 @@ public class HelloController {
         modelMap.addAttribute("size",rp.getSize());
         modelMap.addAttribute("query",rp.getSearchQuery());
         modelMap.addAttribute("originalQuery", rp.getOriginalQuery());
+
+        modelMap.addAttribute("category_search_type", rp.getCategorySearchType());
+        modelMap.addAttribute("cate1", rp.getCateName1());
+        modelMap.addAttribute("cate2", rp.getCateName2());
 
         return "new1/pinter";
     }
@@ -130,7 +134,14 @@ public class HelloController {
         rp.paramParser(request);
 
         // make query string...
-        qp.makeQueryJsonParam(rp);
+        if (rp.getCategorySearchType().equals("category")) {
+            // category search.
+            qp.makeQueryJsonParamForCateSearch(rp);
+        }
+        else {
+            // normal search.
+            qp.makeQueryJsonParam(rp);
+        }
 
         se.setCrawlUrl(rp.getSearchUrlParam());
         se.setCrawlEncoding("utf-8");
@@ -159,6 +170,10 @@ public class HelloController {
         modelMap.addAttribute("size",rp.getSize());
         modelMap.addAttribute("query",rp.getSearchQuery());
         modelMap.addAttribute("originalQuery", rp.getOriginalQuery());
+
+        modelMap.addAttribute("category_search_type", rp.getCategorySearchType());
+        modelMap.addAttribute("cate1", rp.getCateName1());
+        modelMap.addAttribute("cate2", rp.getCateName2());
 
         return "new1/pinter_ajax";
     }
