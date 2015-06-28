@@ -45,6 +45,8 @@
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">스토퍼</a></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">폴</a></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">팩</a></li>
+                  <li class="divider"></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">삽/망치/도끼/툴/삽</a></li>
               </ul>
           </li>
 
@@ -72,7 +74,7 @@
                   <li><a href="./search?category_search_type=category&cate1=003&cate2=001&cate3=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">침낭라이너</a></li>
                   <li><a href="./search?category_search_type=category&cate1=003&cate2=001&cate3=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">커버/압축색</a></li>
                   <li class="divider"></li>
-                  <li><a href="./search?category_search_type=category&cate1=003&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">매트 전체</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">매트전체</a></li>
                   <li><a href="./search?category_search_type=category&cate1=003&cate2=002&cate3=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">자충매트</a></li>
                   <li><a href="./search?category_search_type=category&cate1=003&cate2=002&cate3=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">에어매트</a></li>
                   <li><a href="./search?category_search_type=category&cate1=003&cate2=002&cate3=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">발포매트</a></li>
@@ -80,8 +82,8 @@
                   <li><a href="./search?category_search_type=category&cate1=003&cate2=002&cate3=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">온수매트</a></li>
                   <li><a href="./search?category_search_type=category&cate1=003&cate2=002&cate3=006&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">매트 기타</a></li>
                   <li class="divider"></li>
-                  <li><a href="./search?category_search_type=category&cate1=003&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">침대</a></li>
-                  <li><a href="./search?category_search_type=category&cate1=003&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">해먹</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">침대/해먹</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">베개/방석/귀마개/안대</a></li>
                   <li><a href="./search?category_search_type=category&cate1=003&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">펌프/담요/텐트슈즈/기타</a></li>
               </ul>
           </li>
@@ -120,7 +122,8 @@
                     <li><a href="./search?category_search_type=category&cate1=005&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">컵</a></li>
                     <li><a href="./search?category_search_type=category&cate1=005&cate2=006&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">물병/수낭</a></li>
                     <li><a href="./search?category_search_type=category&cate1=005&cate2=007&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">보온병/보냉병</a></li>
-                    <li><a href="./search?category_search_type=category&cate1=005&cate2=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">식기류 기타</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=005&cate2=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">칼/가위/도마/수저/포크</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=005&cate2=009&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">식기류 기타</a></li>
                 </ul>
             </li>
 
@@ -166,11 +169,13 @@
                   <li><a href="./search?category_search_type=category&cate1=009&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">전체</a></li>
                   <li><a href="./search?category_search_type=category&cate1=009&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">배낭</a></li>
                   <li><a href="./search?category_search_type=category&cate1=009&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">디팩</a></li>
-                  <li><a href="./search?category_search_type=category&cate1=009&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">배낭소품</a></li>
                   <li class="divider"></li>
-                  <li><a href="./search?category_search_type=category&cate1=009&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">힙색</a></li>
-                  <li><a href="./search?category_search_type=category&cate1=009&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">가방</a></li>
-                  <li><a href="./search?category_search_type=category&cate1=009&cate2=006&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">각종 케이스</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">가방전체</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&cate2=003&cate3=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">힙색</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&cate2=003&cate3=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">메신저백</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&cate2=003&cate3=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">더플/카고백</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&cate2=003&cate3=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">케이스</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">기타 가방</a></li>
               </ul>
           </li>
 
