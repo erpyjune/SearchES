@@ -23,6 +23,7 @@ public class RequestParam {
     private String categorySearchType="";
     private String cateName1="";
     private String cateName2="";
+    private String cateName3="";
     private HashMap<String, Object> queryParamList;
     private static final String prefixUrl = "http://summarynode.cafe24.com:9200/shop/okmall/_search?pretty=true&";
 
@@ -122,6 +123,14 @@ public class RequestParam {
         this.cateName2 = cateName2;
     }
 
+    public String getCateName3() {
+        return cateName3;
+    }
+
+    public void setCateName3(String cateName3) {
+        this.cateName3 = cateName3;
+    }
+
     public HashMap<String, Object> getQueryParamList() {
         return queryParamList;
     }
@@ -164,6 +173,7 @@ public class RequestParam {
         categorySearchType = request.getParameter("category_search_type");
         cateName1 = request.getParameter("cate1");
         cateName2 = request.getParameter("cate2");
+        cateName3 = request.getParameter("cate3");
         String q = request.getParameter("query");
         if (q!=null) {
 //            originalQuery = new String(q.getBytes("ISO-8859-1"),"UTF-8");
@@ -180,6 +190,7 @@ public class RequestParam {
         logger.info(" category_search_type : " + categorySearchType);
         logger.info(" cate1 : " + cateName1);
         logger.info(" cate2 : " + cateName2);
+        logger.info(" cate3 : " + cateName3);
         logger.info(" =================================================");
     }
 
@@ -241,6 +252,15 @@ public class RequestParam {
         else {
             searchQuery = originalQuery;
         }
+
+        if (cateName1==null) {
+            cateName1="";
+        }
+
+        if (cateName2==null) {
+            cateName2="";
+        }
+
 
         // 카테고리 검색을 할지 일반 검색을 할지 이 parameter로 정해진다.
         if (categorySearchType==null) {

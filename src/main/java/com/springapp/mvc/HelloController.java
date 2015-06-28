@@ -118,6 +118,7 @@ public class HelloController {
         modelMap.addAttribute("category_search_type", rp.getCategorySearchType());
         modelMap.addAttribute("cate1", rp.getCateName1());
         modelMap.addAttribute("cate2", rp.getCateName2());
+        modelMap.addAttribute("cate3", rp.getCateName3());
 
         return "new1/pinter";
     }
@@ -174,6 +175,7 @@ public class HelloController {
         modelMap.addAttribute("category_search_type", rp.getCategorySearchType());
         modelMap.addAttribute("cate1", rp.getCateName1());
         modelMap.addAttribute("cate2", rp.getCateName2());
+        modelMap.addAttribute("cate3", rp.getCateName3());
 
         return "new1/pinter_ajax";
     }

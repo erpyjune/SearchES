@@ -20,131 +20,158 @@
        <ul class="nav navbar-nav">
 
           <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">등산복<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">텐트/타프<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                  <li><a href="./search?query=바람 막이 자켓 바지 조끼 반팔 상의&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">자켓/바지</a></li>
-                  <li><a href="./search?query=바람 막이&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">바람막이</a></li>
-                  <li><a href="./search?query=자켓&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">자켓</a></li>
-                  <li><a href="./search?query=조끼&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">조끼</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">텐트 전체</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=002&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">타프 전체</a></li>
                   <li class="divider"></li>
-                  <li><a href="./search?query=바지&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">바지</a></li>
-                  <li><a href="./search?query=반바지&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">반바지</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">거실텐트/리빙쉘</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">티피텐트</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">백패킹(1~2인용)텐트</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">3인이상 텐트</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">그늘막/모기장</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=006&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">비비색/침낭커버</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=007&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">루프탑텐트</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">기타텐트</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">그라운드시트</a></li>
                   <li class="divider"></li>
-                  <li><a href="./search?query=긴팔 상의&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">긴팔상의</a></li>
-                  <li><a href="./search?query=반팔 상의&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">반팔상의</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=002&cate3=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">사각타프</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=002&cate3=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">헥사타프</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=002&cate3=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">스크린타프</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=002&cate3=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">관련용품</a></li>
+                  <li class="divider"></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">텐트/타프 관련장비 전체</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">스트링/로프</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">스토퍼</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">폴</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">팩</a></li>
               </ul>
           </li>
 
-
           <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">신발류<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">테이블/의자<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                  <li><a href="./search?query=등산화 아쿠아 슈즈 샌들 릿지화 암벽화 슬리퍼&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">신발</a></li>
-                  <li><a href="./search?query=등산화&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">등산화</a></li>
-                  <li><a href="./search?query=암벽화&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">암벽화</a></li>
-                  <li><a href="./search?query=릿지화&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">릿지화</a></li>
-                  <li><a href="./search?query=트레일러닝화&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">트레일러닝화</a></li>
-                  <li class="divider"></li>
-                  <li><a href="./search?query=아쿠아 슈즈&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">아쿠아슈즈</a></li>
-                  <li><a href="./search?query=샌들&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">샌들</a></li>
-                  <li><a href="./search?query=슬리퍼&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">슬리퍼</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">전체</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=002&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">테이블</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=002&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">키친테이블</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=002&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">IGT류</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=002&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">의자</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=002&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">침대</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=002&cate2=006&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">가구류 기타</a></li>
+
               </ul>
           </li>
 
-
           <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">텐트류<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">침낭/매트/침대<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                  <li><a href="./search?query=텐트 타프&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">텐트/타프</a></li>
-                  <li><a href="./search?query=텐트&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">텐트</a></li>
-                  <li><a href="./search?query=리빙쉘 거실텐트&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">리빙쉘/거실텐트</a></li>
-                  <li><a href="./search?query=티피 텐트&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">티피텐트</a></li>
-                  <li><a href="./search?query=알파인 텐트&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">알파인 텐트</a></li>
-                  <li><a href="./search?query=1인용 2인용 텐트&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">1~2인용 텐트</a></li>
-                  <li><a href="./search?query=3인용 텐트&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">3인용 텐트</a></li>
-                  <li><a href="./search?query=돔 텐트&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">돔텐트</a></li>
-                  <li><a href="./search?query=비비 텐트&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">비비</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">침낭전체</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=001&cate3=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">3계절침낭</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=001&cate3=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">동계침낭</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=001&cate3=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">하계침낭</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=001&cate3=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">침낭라이너</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=001&cate3=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">커버/압축색</a></li>
                   <li class="divider"></li>
-                  <li><a href="./search?query=타프&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">타프</a></li>
-                  <li><a href="./search?query=사각 타프&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">사각 타프</a></li>
-                  <li><a href="./search?query=헥사 타프&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">헥사 타프</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">매트 전체</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=002&cate3=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">자충매트</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=002&cate3=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">에어매트</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=002&cate3=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">발포매트</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=002&cate3=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">레저시트</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=002&cate3=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">온수매트</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=002&cate3=006&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">매트 기타</a></li>
                   <li class="divider"></li>
-                  <li><a href="./search?query=그라운드시트 풋프린트&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">풋프린트</a></li>
-                  <li><a href="./search?query=매트 이너매트&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">매트</a></li>
-                  <li><a href="./search?query=폴대 폴&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">폴</a></li>
-                  <li><a href="./search?query=팩 텐트팩&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">팩</a></li>
-                  <li><a href="./search?query=망치 해머&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">망치</a></li>
-                  <li><a href="./search?query=스트링 스토퍼&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">스트링/스토퍼</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">침대</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">해먹</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=003&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">펌프/담요/텐트슈즈/기타</a></li>
               </ul>
           </li>
 
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">가구<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">버너/난로/화로대/랜턴/BBQ<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="./search?query=테이블 IGT 의자&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">테이블/의자</a></li>
-                    <li><a href="./search?query=테이블 IGT&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">테이블</a></li>
-                    <li><a href="./search?query=키친 테이블 IGT&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">키친테이블</a></li>
-                    <li><a href="./search?query=BBQ 테이블&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">BBQ테이블</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=004&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">버너 전체</a></li>
                     <li class="divider"></li>
-                    <li><a href="./search?query=의자&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">의자</a></li>
-                    <li><a href="./search?query=릴렉스 체어&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">릴렉스 체어</a></li>
-                    <li><a href="./search?query=백패킹 체어&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">백패킹 체어</a></li>
-                    <li><a href="./search?query=BBQ 의자&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">BBQ 의자</a></li>
-                    <li><a href="./search?query=해먹 침대 야전침대&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">침대/해먹</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=004&cate2=001&cate3=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">가스버너</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=004&cate2=001&cate3=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">휘발류버너</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=004&cate2=001&cate3=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">버너 기타</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=004&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">버너관련소품</a></li>
+                    <li class="divider"></li>
+                    <li><a href="./search?category_search_type=category&cate1=004&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">난로/히터</a></li>
+                    <li class="divider"></li>
+                    <li><a href="./search?category_search_type=category&cate1=006&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">화료대/BBQ/랜턴 전체</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=006&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">랜턴</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=006&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">손전등/후래쉬</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=006&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">헤드랜턴</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=006&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">화로대/그릴</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=006&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">기타장비</a></li>
                 </ul>
             </li>
 
 
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">코펠/버너/연료<span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">식기류<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="./search?query=코펠 버너 스토브 컵 접시 아이스박스 쿨러 프라이팬 칼 가위&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">코펠/버너/주방용품</a></li>
-                    <li><a href="./search?query=코펠&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">코펠</a></li>
-                    <li><a href="./search?query=접시&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">접시</a></li>
-                    <li><a href="./search?query=컵&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">컵</a></li>
-                    <li><a href="./search?query=쿨러 아이스박스&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">쿨러</a></li>
-                    <li><a href="./search?query=프라이팬 팬&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">프라이팬</a></li>
-                    <li><a href="./search?query=더치 오븐 마이크로캡슐 오벌 아일렛&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">더치오븐장비</a></li>
-                    <li class="divider"></li>
-                    <li><a href="./search?query=버너 스토브&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">버너</a></li>
-                    <li><a href="./search?query=가스 버너&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">가스 스토브</a></li>
-                    <li class="divider"></li>
-                    <li><a href="./search?query=화로대&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">화로대</a></li>
-                    <li><a href="./search?query=연료 차콜 숯 가스 화이트오일&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">연료</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">식기류 전체</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=005&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">코펠</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=005&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">쿨러/아이스박스</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=005&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">식기</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=005&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">프라이팬/주전자/칼</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=005&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">컵</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=005&cate2=006&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">물병/수낭</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=005&cate2=007&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">보온병/보냉병</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=005&cate2=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">식기류 기타</a></li>
                 </ul>
             </li>
 
 
+           <li class="dropdown">
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">등산복/등산화 <span class="caret"></span></a>
+               <ul class="dropdown-menu" role="menu">
+                   <li><a href="./search?category_search_type=category&cate1=007&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">전체</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=007&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">자켓/조끼/바람막이</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=007&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">바지/반바지/칠부</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=007&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">긴팔/반바지</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=007&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">언더웨어</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=007&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">장갑/모자/양말/스카프</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=007&cate2=006&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">등산복 기타</a></li>
+                   <li class="divider"></li>
+                   <li><a href="./search?category_search_type=category&cate1=007&cate2=007&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">등산화</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=007&cate2=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">아웃도어 신발</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=007&cate2=009&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">샌들/아쿠아/슬리퍼</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=007&cate2=010&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">신발 기타</a></li>
+               </ul>
+           </li>
+
+
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">침낭류 <span class="caret"></span></a>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">등산장비 <span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="./search?query=침낭 매트&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">침낭/매트</a></li>
-                    <li><a href="./search?query=침낭&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">침낭</a></li>
-                    <li><a href="./search?query=다운 침낭&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">다운 침낭</a></li>
-                    <li><a href="./search?query=합성 침낭&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">합성섬유 침낭</a></li>
-                    <li class="divider"></li>
-                    <li><a href="./search?query=매트&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">매트</a></li>
-                    <li><a href="./search?query=베개&operator=and&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">베개</a></li>
-                    <li><a href="./search?query=담요 매트리스&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">담요 매트리스</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">전체</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=008&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">스틱</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=008&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">카라비너/퀵드로우</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=008&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">아이젠/스패츠</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=008&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">우산/우의</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=008&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">고글/선글라스</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=008&cate2=006&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">시계</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=008&cate2=007&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">고도계/나침반/온도계</a></li>
+                    <li><a href="./search?category_search_type=category&cate1=008&cate2=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">등산장비 기타</a></li>
                 </ul>
             </li>
 
 
           <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">가방<span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">배낭/가방<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
-                  <li><a href="./search?query=가방 배낭&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">가방</a></li>
-                  <li><a href="./search?query=배낭&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">배낭</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">전체</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">배낭</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">디팩</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">배낭소품</a></li>
                   <li class="divider"></li>
-                  <li><a href="./search?query=스틱&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">스틱</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">힙색</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">가방</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=009&cate2=006&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">각종 케이스</a></li>
               </ul>
-          </li>
-
-
-          <li>
-              <a href="./search?query=lantern stove burner&operator=or&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">
-                  버너 / 랜턴</a>
           </li>
 
 

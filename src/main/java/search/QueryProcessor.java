@@ -189,17 +189,40 @@ public class QueryProcessor {
                 "\"size\" : %s" +
                 "}";
 
-        if (rp.getCateName1().length()>0 && rp.getCateName2().length()==0) {
-            queryString = String.format(cate1Query, rp.getCateName1(),rp.getFrom(),rp.getSize());
-            logger.info(" ## CATE-1 type");
-        }
-        else if (rp.getCateName1().length()>0 && rp.getCateName2().length()>0) {
-            queryString = String.format(cate2Query, rp.getCateName1(),rp.getCateName2(),rp.getFrom(),rp.getSize());
-            logger.info(" ## CATE-2 type");
+        String cate3Query ="{" +
+                "\"query\":{" +
+                "\"bool\":{" +
+                "\"must\": [" +
+                "{\"match\":{\"cate1\":\"%s\"}}," +
+                "{\"match\":{\"cate2\":\"%s\"}}," +
+                "{\"match\":{\"cate3\":\"%s\"}}" +
+                "]" +
+                "}" +
+                "}," +
+                "\"from\" : %s," +
+                "\"size\" : %s" +
+                "}";
+
+        if (rp.getCateName1().length()>0){
+            // cate1 ~ 3 모두 들어 있엉.
+            if (rp.getCateName2().length()>0 && rp.getCateName3().length()>0) {
+                queryString = String.format(cate3Query,
+                        rp.getCateName1(),rp.getCateName2(),rp.getCateName3(),rp.getFrom(),rp.getSize());
+            }
+            // cate1, cate2 만 있어
+            else if (rp.getCateName2().length()>0 && rp.getCateName3().length()==0) {
+                queryString = String.format(cate2Query,
+                        rp.getCateName1(),rp.getCateName2(),rp.getFrom(),rp.getSize());
+            }
+            // cate1 만 있엉.
+            else if (rp.getCateName2().length()==0 && rp.getCateName3().length()==0) {
+                queryString = String.format(cate1Query,
+                        rp.getCateName1(),rp.getFrom(),rp.getSize());
+            }
         }
         else {
-            logger.error(String.format(" Category search param error : cate1(%s), cate2(%s) !!",
-                    rp.getCateName1(), rp.getCateName2()));
+            logger.error(String.format(" Category search param error : cate1(%s), cate2(%s), cate3(%s) !!",
+                    rp.getCateName1(), rp.getCateName2(), rp.getCateName3()));
             throw new RuntimeException();
         }
 
