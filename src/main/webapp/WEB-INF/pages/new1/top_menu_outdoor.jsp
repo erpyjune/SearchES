@@ -13,7 +13,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./search?query=텐트 타프 등산복 배낭&size=20&from=0&display_type=${displayType}&operator=or">OutdoorLife&You</a>
+      <a class="navbar-brand" href="./search?query=텐트 타프 등산복 배낭 코펠&size=20&from=0&display_type=${displayType}&operator=or">OutdoorLife&You</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -22,6 +22,7 @@
           <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">텐트/타프<span class="caret"></span></a>
               <ul class="dropdown-menu" role="menu">
+                  <li><a href="./search?category_search_type=category&cate1=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">전체</a></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">텐트 전체</a></li>
                   <li><a href="./search?category_search_type=category&cate1=002&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">타프 전체</a></li>
                   <li class="divider"></li>
@@ -32,21 +33,20 @@
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">그늘막/모기장</a></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=006&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">비비색/침낭커버</a></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=007&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">루프탑텐트</a></li>
-                  <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">기타텐트</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=999&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">텐트 기타</a></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">그라운드시트</a></li>
                   <li class="divider"></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=002&cate3=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">사각타프</a></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=002&cate3=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">헥사타프</a></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=002&cate3=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">스크린타프</a></li>
-                  <li><a href="./search?category_search_type=category&cate1=001&cate2=002&cate3=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">관련용품</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=002&cate3=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">윈드스크린/프론트월</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=002&cate3=999&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">타프 기타</a></li>
                   <li class="divider"></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">텐트/타프 관련장비 전체</a></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">스트링/로프</a></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">스토퍼</a></li>
-                  <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">폴</a></li>
-                  <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">팩</a></li>
-                  <li class="divider"></li>
-                  <li><a href="./search?category_search_type=category&cate1=001&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">삽/망치/도끼/툴/삽</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">폴/팩</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=004&cate3=999&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">관련장비 기타</a></li>
               </ul>
           </li>
 
