@@ -24,7 +24,7 @@
               <ul class="dropdown-menu" role="menu">
                   <li><a href="./search?category_search_type=category&cate1=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">전체</a></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">텐트 전체</a></li>
-                  <li><a href="./search?category_search_type=category&cate1=002&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">타프 전체</a></li>
+                  <li><a href="./search?category_search_type=category&cate1=001&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">타프 전체</a></li>
                   <li class="divider"></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">거실텐트/리빙쉘</a></li>
                   <li><a href="./search?category_search_type=category&cate1=001&cate2=001&cate3=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">티피텐트</a></li>

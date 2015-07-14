@@ -172,11 +172,8 @@ public class RequestParam {
         displayType = request.getParameter("display_type");
         categorySearchType = request.getParameter("category_search_type");
         cateName1 = request.getParameter("cate1");
-        if (cateName1==null) cateName1="";
         cateName2 = request.getParameter("cate2");
-        if (cateName2==null) cateName2="";
         cateName3 = request.getParameter("cate3");
-        if (cateName3==null) cateName3="";
         String q = request.getParameter("query");
         if (q!=null) {
 //            originalQuery = new String(q.getBytes("ISO-8859-1"),"UTF-8");
@@ -262,6 +259,10 @@ public class RequestParam {
 
         if (cateName2==null) {
             cateName2="";
+        }
+
+        if (cateName3==null) {
+            cateName3="";
         }
 
 

@@ -211,16 +211,17 @@ public class SearchES {
         JsonNode list = hits.path("hits");
         Iterator iterator = list.iterator();
         int listCount=0;
+        JsonNode source;
         while(iterator.hasNext()) {
             SearchResultItem searchResultItem = new SearchResultItem();
             JsonNode node = (JsonNode)iterator.next();
 
-            searchResultItem.setScore(node.get("_score").textValue());
+            searchResultItem.setScore(node.get("_score").asText());
 
 //            System.out.println(node.get("_id"));
 //            System.out.println(node.get("_score"));
 
-            JsonNode source = node.path("_source");
+            source = node.path("_source");
             searchResultItem.setDocid(source.get("dataid").textValue());
             searchResultItem.setProductName(source.get("product_name").textValue());
             searchResultItem.setBrandName(source.get("brand_name").textValue());
@@ -239,7 +240,7 @@ public class SearchES {
 //            System.out.println(source.get("dataid"));
 //            System.out.println(source.get("product_name"));
 //            System.out.println(source.get("url"));
-//            System.out.println("=======================");
+//            System.out.println("=========================================================");
         }
 
         searchResultHeader.setListCount(listCount);

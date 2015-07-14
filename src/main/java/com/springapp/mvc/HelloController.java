@@ -1,5 +1,6 @@
 package com.springapp.mvc;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +14,9 @@ import java.util.Vector;
 @Controller
 @RequestMapping("/")
 public class HelloController {
+
+    private static Logger logger = Logger.getLogger(HelloController.class.getName());
+
     @RequestMapping(method = RequestMethod.GET)
     public String index(ModelMap model) throws Exception {
 
@@ -120,6 +124,9 @@ public class HelloController {
         modelMap.addAttribute("cate2", rp.getCateName2());
         modelMap.addAttribute("cate3", rp.getCateName3());
 
+        logger.info(" ACTION : search!!");
+        logger.info(sr.getSearchResultItems().toString());
+
         return "new1/pinter";
     }
 
@@ -176,6 +183,9 @@ public class HelloController {
         modelMap.addAttribute("cate1", rp.getCateName1());
         modelMap.addAttribute("cate2", rp.getCateName2());
         modelMap.addAttribute("cate3", rp.getCateName3());
+
+        logger.info(" ACTION : pin_ajax!!");
+        logger.info(sr.getSearchResultItems().toString());
 
         return "new1/pinter_ajax";
     }

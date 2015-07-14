@@ -158,7 +158,6 @@ public class QueryProcessor {
     ///////////////////////////////////////////////////////////////////////////////
     public void makeQueryJsonParamForCateSearch(RequestParam rp) throws Exception {
         String queryString="";
-
         String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
 //        String urlPart = "http://summarynode.com:9200/shop/okmall/_search?source=";
 
@@ -206,17 +205,17 @@ public class QueryProcessor {
         if (rp.getCateName1().length()>0){
             // cate1 ~ 3 모두 들어 있엉.
             if (rp.getCateName2().length()>0 && rp.getCateName3().length()>0) {
-                queryString = String.format(cate3Query,
+                queryString = String.format("{\"query\":{\"bool\":{\"must\": [{\"match\":{\"cate1\":\"%s\"}},{\"match\":{\"cate2\":\"%s\"}},{\"match\":{\"cate3\":\"%s\"}}]}},\"from\" : %s,\"size\" : %s}",
                         rp.getCateName1(),rp.getCateName2(),rp.getCateName3(),rp.getFrom(),rp.getSize());
             }
             // cate1, cate2 만 있어
             else if (rp.getCateName2().length()>0 && rp.getCateName3().length()==0) {
-                queryString = String.format(cate2Query,
+                queryString = String.format("{\"query\":{\"bool\":{\"must\": [{\"match\":{\"cate1\":\"%s\"}},{\"match\":{\"cate2\":\"%s\"}}]}},\"from\" : %s,\"size\" : %s}",
                         rp.getCateName1(),rp.getCateName2(),rp.getFrom(),rp.getSize());
             }
             // cate1 만 있엉.
             else if (rp.getCateName2().length()==0 && rp.getCateName3().length()==0) {
-                queryString = String.format(cate1Query,
+                queryString = String.format("{\"query\":{\"bool\":{\"must\":[{\"match\":{\"cate1\":\"%s\"}}]}},\"from\":%s,\"size\":%s}",
                         rp.getCateName1(),rp.getFrom(),rp.getSize());
             }
         }
@@ -229,8 +228,10 @@ public class QueryProcessor {
         // 최종 검색할 url 셋팅.
         rp.setSearchUrlParam(urlPart + URLEncoder.encode(queryString,"UTF-8"));
 //        rp.setSearchUrlParam(urlPart + queryString);
-        logger.info(" Query : " + queryString);
-        logger.info(" queryString : " + rp.getSearchUrlParam());
+        logger.info(cate1Query);
+        logger.info(" queryString : " + queryString);
+        logger.info(" Original : " + urlPart + queryString);
+        logger.info(" Encoding : " + rp.getSearchUrlParam());
     }
 
 

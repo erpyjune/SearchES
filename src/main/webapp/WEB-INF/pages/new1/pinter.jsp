@@ -130,7 +130,7 @@
         var category_search_type = getQueryVariable('category_search_type');
         var cate1 = getQueryVariable('cate1');
         var cate2 = getQueryVariable('cate2');
-        var cate2 = getQueryVariable('cate3');
+        var cate3 = getQueryVariable('cate3');
 
 //        alert('size:'+size+', from:'+next_from+', query:'+query);
 
@@ -161,10 +161,8 @@
                     alert("더이상 목록이 존재 하지 않습니다.");
                 }else{
                     if($(".white-panel").attr("nfrom")){
-//                            alert('more');
                         $("#blog-landing").append(data);
                     }else{ //첫실행일 경우li 없음
-//                            alert('first:');
                         $('#blog-landing').append(data);
                     }
                 }

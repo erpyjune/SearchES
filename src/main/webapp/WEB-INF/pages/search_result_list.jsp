@@ -26,7 +26,8 @@
     <a href="./summary?q=${query_param}">
       <span class="label label-warning">${list.getCpName()}</span>
     </a>
-    <h4><del><small>${list.getOrgPrice()}</small></del> -> <strong class="text-danger">${list.getSalePrice()}</strong></h4>
+    <%--<h4><del><small>${list.getOrgPrice()}</small></del> -> <strong class="text-danger">${list.getSalePrice()}</strong></h4>--%>
+    <h4><del><small>${list.getOrgPrice()}</small></del> -> <small>${list.getSalePrice()}</small></h4>
     <a class="btn btn-primary" href="${list.getContentUrl()}" target="_new">Go Site<span class="glyphicon glyphicon-chevron-right"></span></a>
   </div>
 </div>
