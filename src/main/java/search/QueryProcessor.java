@@ -202,21 +202,20 @@ public class QueryProcessor {
                 "\"size\" : %s" +
                 "}";
 
-        if (rp.getCateName1().length()>0){
+        if (rp.getCateName1().length()>0) {
             // cate1 ~ 3 모두 들어 있엉.
             if (rp.getCateName2().length()>0 && rp.getCateName3().length()>0) {
-                queryString = String.format("{\"query\":{\"bool\":{\"must\": [{\"match\":{\"cate1\":\"%s\"}},{\"match\":{\"cate2\":\"%s\"}},{\"match\":{\"cate3\":\"%s\"}}]}},\"from\" : %s,\"size\" : %s}",
-                        rp.getCateName1(),rp.getCateName2(),rp.getCateName3(),rp.getFrom(),rp.getSize());
+                queryString = String.format(
+                        cate3Query, rp.getCateName1(), rp.getCateName2(), rp.getCateName3(),rp.getFrom(), rp.getSize());
             }
             // cate1, cate2 만 있어
             else if (rp.getCateName2().length()>0 && rp.getCateName3().length()==0) {
-                queryString = String.format("{\"query\":{\"bool\":{\"must\": [{\"match\":{\"cate1\":\"%s\"}},{\"match\":{\"cate2\":\"%s\"}}]}},\"from\" : %s,\"size\" : %s}",
-                        rp.getCateName1(),rp.getCateName2(),rp.getFrom(),rp.getSize());
+                queryString = String.format(
+                        cate2Query, rp.getCateName1(), rp.getCateName2(), rp.getFrom(), rp.getSize());
             }
-            // cate1 만 있엉.
-            else if (rp.getCateName2().length()==0 && rp.getCateName3().length()==0) {
-                queryString = String.format("{\"query\":{\"bool\":{\"must\":[{\"match\":{\"cate1\":\"%s\"}}]}},\"from\":%s,\"size\":%s}",
-                        rp.getCateName1(),rp.getFrom(),rp.getSize());
+            else { // cate1만 있다.
+                queryString = String.format(
+                        cate1Query, rp.getCateName1(), rp.getFrom(), rp.getSize());
             }
         }
         else {
@@ -228,10 +227,13 @@ public class QueryProcessor {
         // 최종 검색할 url 셋팅.
         rp.setSearchUrlParam(urlPart + URLEncoder.encode(queryString,"UTF-8"));
 //        rp.setSearchUrlParam(urlPart + queryString);
-        logger.info(cate1Query);
+//        logger.info(cate1Query);
         logger.info(" queryString : " + queryString);
-        logger.info(" Original : " + urlPart + queryString);
-        logger.info(" Encoding : " + rp.getSearchUrlParam());
+        logger.info(String.format("cate1(%s)", rp.getCateName1()));
+        logger.info(String.format("cate2(%s)", rp.getCateName2()));
+        logger.info(String.format("cate3(%s)", rp.getCateName3()));
+//        logger.info(" Original : " + urlPart + queryString);
+//        logger.info(" Encoding : " + rp.getSearchUrlParam());
     }
 
 
