@@ -13,7 +13,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./search?query=텐트 타프 등산복 배낭 코펠&size=20&from=0&display_type=${displayType}&operator=or">OutdoorLife&You</a>
+      <a class="navbar-brand" href="./search?query=텐트 타프 등산복 배낭 코펠&size=20&from=0&display_type=${displayType}&operator=or">Home</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -123,22 +123,7 @@
 
 
            <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">등산장비<span class="caret"></span></a>
-               <ul class="dropdown-menu" role="menu">
-                   <li><a href="./search?category_search_type=category&cate1=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">등산장비 전체</a></li>
-                   <li><a href="./search?category_search_type=category&cate1=008&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">스틱</a></li>
-                   <li><a href="./search?category_search_type=category&cate1=008&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">카라비너/퀵드로우</a></li>
-                   <li><a href="./search?category_search_type=category&cate1=008&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">아이젠/스패츠</a></li>
-                   <li><a href="./search?category_search_type=category&cate1=008&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">우산/우의</a></li>
-                   <li><a href="./search?category_search_type=category&cate1=008&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">고글/선글라스</a></li>
-                   <li><a href="./search?category_search_type=category&cate1=008&cate2=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">암벽장비</a></li>
-                   <li><a href="./search?category_search_type=category&cate1=008&cate2=999&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">등산장비 기타</a></li>
-               </ul>
-           </li>
-
-
-           <li class="dropdown">
-               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">등산패션<span class="caret"></span></a>
+               <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">등산류<span class="caret"></span></a>
                <ul class="dropdown-menu" role="menu">
                    <li><a href="./search?category_search_type=category&cate1=007&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">등산복 전체</a></li>
                    <li><a href="./search?category_search_type=category&cate1=007&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">자켓/조끼/바람막이</a></li>
@@ -151,6 +136,15 @@
                    <li><a href="./search?category_search_type=category&cate1=007&cate2=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">아웃도어 신발</a></li>
                    <li><a href="./search?category_search_type=category&cate1=007&cate2=009&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">샌들/아쿠아/슬리퍼</a></li>
                    <li><a href="./search?category_search_type=category&cate1=007&cate2=999&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">등산패션 기타</a></li>
+                   <li class="divider"></li>
+                   <li><a href="./search?category_search_type=category&cate1=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">등산장비 전체</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=008&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">스틱</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=008&cate2=002&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">카라비너/퀵드로우</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=008&cate2=003&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">아이젠/스패츠</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=008&cate2=004&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">우산/우의</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=008&cate2=005&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">고글/선글라스</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=008&cate2=008&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">암벽장비</a></li>
+                   <li><a href="./search?category_search_type=category&cate1=008&cate2=999&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}">등산장비 기타</a></li>
                </ul>
            </li>
 
@@ -184,9 +178,9 @@
            </li>
 
 
-          <li>
-              <a href="#">About</a>
-          </li>
+          <%--<li>--%>
+              <%--<a href="#">About</a>--%>
+          <%--</li>--%>
 
 
       </ul>
