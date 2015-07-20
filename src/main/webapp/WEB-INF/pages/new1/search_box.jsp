@@ -20,7 +20,7 @@
           <!-- search result info -->
           <div class="row">
               <div class="col-lg-12">
-                  <h5> Result :  <span class="label label-default">${searchTotalCount}</span></h5>
+                  <h5> 검색결과 :  <span class="label label-default">${searchTotalCount}</span></h5>
               </div>
           </div>
           <!-- display method -->
@@ -38,8 +38,8 @@
                       <div class="btn-group">
                           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Sort<span class="caret"></span></button>
                           <ul class="dropdown-menu" role="menu">
-                              <li><a href="./search?query=${query}&from=0&size=${pageMap.prevPageSize}&display_type=${displayType}&sort_field=sale_price&sort_option=asc&operator=${operator}">가격</a></li>
-                              <li><a href="./search?query=${query}&from=0&size=${pageMap.prevPageSize}&display_type=${displayType}&sort_field=none&sort_option=none&operator=${operator}">정확도</a></li>
+                              <li><a href="./search?query=${query}&from=0&size=${pageMap.prevPageSize}&display_type=${displayType}&sort_field=sale_price&sort_option=asc&operator=${operator}&category_search_type=${category_search_type}&cate1=${cate1}&cate2=${cate2}&cate3=${cate3}">가격</a></li>
+                              <li><a href="./search?query=${query}&from=0&size=${pageMap.prevPageSize}&display_type=${displayType}&sort_field=none&sort_option=none&operator=${operator}&category_search_type=${category_search_type}&cate1=${cate1}&cate2=${cate2}&cate3=${cate3}">정확도</a></li>
                               <%--<li class="divider"></li>--%>
                               <%--<li><a href="#">Separated link</a></li>--%>
                           </ul>
@@ -55,6 +55,11 @@
   <div class="row">
     <div class="col-lg-12">
       <hr>
+        <%--<div class="btn-group" role="group" aria-label="버튼 그룹">--%>
+            <%--<a href="./search?category_search_type=category&cate1=001&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}"><button type="button" class="btn btn-default">텐트전체</button></a>--%>
+            <%--<button type="button" class="btn btn-default">Middle</button>--%>
+            <%--<a href="./search?category_search_type=category&cate1=001&cate2=001&size=20&from=0&display_type=${displayType}&sort_field=${sortField}&sort_option=${sortOption}"><button type="button" class="btn btn-default">텐트전체</button></a>--%>
+        <%--</div>--%>
     </div>
   </div>
   <!-- /. line -->

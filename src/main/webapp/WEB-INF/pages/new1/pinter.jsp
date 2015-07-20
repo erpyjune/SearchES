@@ -55,16 +55,16 @@
             -o-transition: all 0.3s ease-in-out;
             transition: all 0.3s ease-in-out;
         }
-        /*.modal {*/
-            /*display: none;*/
-            /*position: fixed;*/
-            /*z-index: 1000;*/
-            /*top: 0;*/
-            /*left: 0;*/
-            /*height: 100%;*/
-            /*width: 100%;*/
-            /*background: rgba(255, 255, 255, .8) url('http://summarynode.cafe24.com/SearchES/resources/images/loading34.gif') 50% 50% no-repeat;*/
-        /*}*/
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background: rgba(255, 255, 255, .8) url('http://summarynode.cafe24.com/SearchES/resources/images/loading34.gif') 50% 50% no-repeat;
+        }
         /* When the body has the loading class, we turn
             the scrollbar off with overflow:hidden */
         body.loading {
@@ -105,7 +105,7 @@
             padding_x: 10,
             padding_y: 10,
             margin_bottom: 50,
-//            single_column_breakpoint: 700
+            single_column_breakpoint: 700
         });
     });
 
@@ -152,8 +152,8 @@
         $.ajax({
             type :"GET",
             data :"size="+size+"&from="+next_from+'&operator='+operator+'&sort_option='+sort_option+'&sort_field='+sort_field+'&category_search_type='+category_search_type+'&cate1='+cate1+'&cate2='+cate2+'&cate3='+cate3,
-            url : "http://summarynode.cafe24.com/SearchES/pin_ajax?query="+query,
-//            url : "http://summarynode.com:8080/SearchES/pin_ajax?query="+query,
+//            url : "http://summarynode.cafe24.com/SearchES/pin_ajax?query="+query,
+            url : "http://summarynode.com:8080/SearchES/pin_ajax?query="+query,
             success: function (data){
                 if(data=="false"){
                     alert("데이터를 로드 하지 못하였습니다.");
