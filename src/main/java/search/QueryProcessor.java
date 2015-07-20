@@ -157,50 +157,103 @@ public class QueryProcessor {
 
     ///////////////////////////////////////////////////////////////////////////////
     public void makeQueryJsonParamForCateSearch(RequestParam rp) throws Exception {
+        String cate1Query="", cate2Query="", cate3Query="";
         String queryString="";
         String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
 //        String urlPart = "http://summarynode.com:9200/shop/okmall/_search?source=";
 
 
-        String cate1Query ="{" +
-                "\"query\":{" +
-                "\"bool\":{" +
-                "\"must\":[" +
-                "{\"match\":{\"cate1\":\"%s\"}}" +
-                "]" +
-                "}" +
-                "}," +
-                "\"from\":%s," +
-                "\"size\":%s" +
-                "}";
+        if (rp.getSortField().length()>0 && "asc".equals(rp.getSortOption())) {
+            cate1Query = "{" +
+                    "\"query\":{" +
+                    "\"bool\":{" +
+                    "\"must\":[" +
+                    "{\"match\":{\"cate1\":\"%s\"}}" +
+                    "]" +
+                    "}" +
+                    "}," +
+                    "\"from\":%s," +
+                    "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
+                    "\"size\":%s" +
+                    "}";
+        } else {
+            cate1Query = "{" +
+                    "\"query\":{" +
+                    "\"bool\":{" +
+                    "\"must\":[" +
+                    "{\"match\":{\"cate1\":\"%s\"}}" +
+                    "]" +
+                    "}" +
+                    "}," +
+                    "\"from\":%s," +
+//                    "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
+                    "\"size\":%s" +
+                    "}";
+        }
 
 
-        String cate2Query ="{" +
-                "\"query\":{" +
-                "\"bool\":{" +
-                "\"must\": [" +
-                "{\"match\":{\"cate1\":\"%s\"}}," +
-                "{\"match\":{\"cate2\":\"%s\"}}" +
-                "]" +
-                "}" +
-                "}," +
-                "\"from\" : %s," +
-                "\"size\" : %s" +
-                "}";
+        if (rp.getSortField().length()>0 && "asc".equals(rp.getSortOption())) {
+            cate2Query = "{" +
+                    "\"query\":{" +
+                    "\"bool\":{" +
+                    "\"must\": [" +
+                    "{\"match\":{\"cate1\":\"%s\"}}," +
+                    "{\"match\":{\"cate2\":\"%s\"}}" +
+                    "]" +
+                    "}" +
+                    "}," +
+                    "\"from\" : %s," +
+                    "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
+                    "\"size\" : %s" +
+                    "}";
+        } else {
+            cate2Query = "{" +
+                    "\"query\":{" +
+                    "\"bool\":{" +
+                    "\"must\": [" +
+                    "{\"match\":{\"cate1\":\"%s\"}}," +
+                    "{\"match\":{\"cate2\":\"%s\"}}" +
+                    "]" +
+                    "}" +
+                    "}," +
+                    "\"from\" : %s," +
+//                    "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
+                    "\"size\" : %s" +
+                    "}";
+        }
 
-        String cate3Query ="{" +
-                "\"query\":{" +
-                "\"bool\":{" +
-                "\"must\": [" +
-                "{\"match\":{\"cate1\":\"%s\"}}," +
-                "{\"match\":{\"cate2\":\"%s\"}}," +
-                "{\"match\":{\"cate3\":\"%s\"}}" +
-                "]" +
-                "}" +
-                "}," +
-                "\"from\" : %s," +
-                "\"size\" : %s" +
-                "}";
+        if (rp.getSortField().length()>0 && "asc".equals(rp.getSortOption())) {
+            cate3Query = "{" +
+                    "\"query\":{" +
+                    "\"bool\":{" +
+                    "\"must\": [" +
+                    "{\"match\":{\"cate1\":\"%s\"}}," +
+                    "{\"match\":{\"cate2\":\"%s\"}}," +
+                    "{\"match\":{\"cate3\":\"%s\"}}" +
+                    "]" +
+                    "}" +
+                    "}," +
+                    "\"from\" : %s," +
+                    "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
+                    "\"size\" : %s" +
+                    "}";
+        } else {
+            cate3Query = "{" +
+                    "\"query\":{" +
+                    "\"bool\":{" +
+                    "\"must\": [" +
+                    "{\"match\":{\"cate1\":\"%s\"}}," +
+                    "{\"match\":{\"cate2\":\"%s\"}}," +
+                    "{\"match\":{\"cate3\":\"%s\"}}" +
+                    "]" +
+                    "}" +
+                    "}," +
+                    "\"from\" : %s," +
+//                    "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
+                    "\"size\" : %s" +
+                    "}";
+        }
+
 
         if (rp.getCateName1().length()>0) {
             // cate1 ~ 3 모두 들어 있엉.
@@ -225,7 +278,7 @@ public class QueryProcessor {
         }
 
         // 최종 검색할 url 셋팅.
-        rp.setSearchUrlParam(urlPart + URLEncoder.encode(queryString,"UTF-8"));
+        rp.setSearchUrlParam(urlPart + URLEncoder.encode(queryString, "UTF-8"));
 //        rp.setSearchUrlParam(urlPart + queryString);
 //        logger.info(cate1Query);
         logger.info(" queryString : " + queryString);
