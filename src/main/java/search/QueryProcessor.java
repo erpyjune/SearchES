@@ -152,6 +152,7 @@ public class QueryProcessor {
 
         // 최종 검색할 url 셋팅.
         rp.setSearchUrlParam(sb.toString());
+        logger.info(" QueryString : " + sb.toString());
     }
 
 
