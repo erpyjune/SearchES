@@ -235,8 +235,10 @@ public class RequestParam {
             }
         }
 
-        if (searchType==null)
-            searchType="best_fields";
+        if (searchType==null) {
+//            searchType = "best_fields";
+            searchType = "cross_fields";
+        }
         else {
             if (!"best_fields".equals(searchType) && !"most_fields".equals(searchType)
                     && !"cross_fields".equals(searchType)) {
