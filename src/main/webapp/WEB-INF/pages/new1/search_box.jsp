@@ -14,7 +14,7 @@
         </div>
         <input type="hidden" name="size" value="20">
         <input type="hidden" name="from" value="0">
-        <input type="hidden" name="operator" value="or">
+        <input type="hidden" name="operator" value="and">
         <%--<input type="hidden" name="display_type" value="${displayType}">--%>
         <button type="submit" class="btn btn-default">Search</button>
           <!-- search result info -->
