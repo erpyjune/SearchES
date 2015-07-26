@@ -113,20 +113,22 @@ public class QueryProcessor {
 
     /////////////////////////////////////////////////////////////////////////
     public void makeQueryJsonParam(RequestParam rp) throws Exception {
-        String queryPart="";
-        String typePart="";
-        String operatorPart="";
-        String searchAnalyzerPart="";
-        String searchFieldPart="";
-        String fromSizePart="";
+        String queryPart;
+        String typePart;
+        String matchThredshold;
+        String operatorPart;
+        String searchAnalyzerPart;
+        String searchFieldPart;
+        String fromSizePart;
         String sortPart="";
-        String highlightPart="";
+        String highlightPart;
 
         String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
 //        String urlPart = "http://summarynode.com:9200/shop/okmall/_search?source=";
 
         queryPart             = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
         typePart              = String.format("\"type\":\"%s\",", rp.getSearchType());
+        matchThredshold       = String.format("\"minimum_should_match\":\"\"100%\"\",");
         operatorPart          = String.format("\"operator\" : \"%s\",", rp.getOperator());
         searchAnalyzerPart    = String.format("\"analyzer\" : \"%s\",", "my_search_analyzer");
         searchFieldPart       = "\"fields\":[ \"product_name^10\", \"brand_name^1\", \"keyword^5\" ]}},";
@@ -141,6 +143,7 @@ public class QueryProcessor {
         StringBuilder sb = new StringBuilder(urlPart);
         sb.append(URLEncoder.encode(queryPart, "UTF-8"));
         sb.append(URLEncoder.encode(typePart, "UTF-8"));
+        sb.append(URLEncoder.encode(matchThredshold, "UTF-8"));
         sb.append(URLEncoder.encode(operatorPart, "UTF-8"));
         sb.append(URLEncoder.encode(searchAnalyzerPart, "UTF-8"));
         sb.append(URLEncoder.encode(searchFieldPart,"UTF-8"));
@@ -148,7 +151,7 @@ public class QueryProcessor {
         if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
             sb.append(URLEncoder.encode(sortPart,"UTF-8"));
         }
-        sb.append(URLEncoder.encode(highlightPart,"UTF-8"));
+        sb.append(URLEncoder.encode(highlightPart, "UTF-8"));
 
         // 최종 검색할 url 셋팅.
         rp.setSearchUrlParam(sb.toString());
