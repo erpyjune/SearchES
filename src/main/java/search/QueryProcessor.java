@@ -128,10 +128,10 @@ public class QueryProcessor {
 
         queryPart             = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
         typePart              = String.format("\"type\":\"%s\",", rp.getSearchType());
-        matchThredshold       = String.format("\"minimum_should_match\":\"\"100%\"\",");
+        matchThredshold       = String.format("\"minimum_should_match\":\"%s\",","50%");
         operatorPart          = String.format("\"operator\" : \"%s\",", rp.getOperator());
         searchAnalyzerPart    = String.format("\"analyzer\" : \"%s\",", "my_search_analyzer");
-        searchFieldPart       = "\"fields\":[ \"product_name^10\", \"brand_name^1\", \"keyword^5\" ]}},";
+        searchFieldPart       = "\"fields\":[ \"product_name^5\", \"brand_name^1\", \"keyword^5\" ]}},";
         fromSizePart          = String.format("\"from\" : %s,\"size\" : %s,", rp.getFrom(), rp.getSize());
         if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
 //            String sortPart = "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}],";
