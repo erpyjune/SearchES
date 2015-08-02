@@ -12,6 +12,7 @@ public class RequestParam {
     private static Logger logger = Logger.getLogger(RequestParam.class.getName());
     private String from="";
     private String size="";
+    private String cp="";
     private String sortField="";
     private String sortOption="";
     private String operator="";
@@ -49,6 +50,14 @@ public class RequestParam {
 
     public void setSize(String size) {
         this.size = size;
+    }
+
+    public String getCp() {
+        return cp;
+    }
+
+    public void setCp(String cp) {
+        this.cp = cp;
     }
 
     public String getSortField() {
@@ -165,6 +174,7 @@ public class RequestParam {
 
         String sss = request.getQueryString();
         size = request.getParameter("size");
+        cp = request.getParameter("cp");
         sortField = request.getParameter("sort_field");
         sortOption = request.getParameter("sort_option");
         operator = request.getParameter("operator");
@@ -191,6 +201,7 @@ public class RequestParam {
         logger.info(" cate1 : " + cateName1);
         logger.info(" cate2 : " + cateName2);
         logger.info(" cate3 : " + cateName3);
+        logger.info(" cp : " + cp);
         logger.info(" =================================================");
     }
 
@@ -207,6 +218,8 @@ public class RequestParam {
                 logger.warn("sort field is : " + sortField);
             }
         }
+
+        if (cp==null) cp="";
 
         if (sortOption==null)
             sortOption="";

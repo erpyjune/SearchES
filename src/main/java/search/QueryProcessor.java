@@ -115,8 +115,9 @@ public class QueryProcessor {
     public void makeQueryJsonParam(RequestParam rp) throws Exception {
         String queryPart;
         String typePart;
-        String matchThredshold;
+        String matchThreshold;
         String operatorPart;
+        String filterPart="";
         String searchAnalyzerPart;
         String searchFieldPart;
         String fromSizePart;
@@ -128,11 +129,14 @@ public class QueryProcessor {
 
         queryPart             = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
         typePart              = String.format("\"type\":\"%s\",", rp.getSearchType());
-        matchThredshold       = String.format("\"minimum_should_match\":\"%s\",","50%");
+        matchThreshold       = String.format("\"minimum_should_match\":\"%s\",","50%");
         operatorPart          = String.format("\"operator\" : \"%s\",", rp.getOperator());
         searchAnalyzerPart    = String.format("\"analyzer\" : \"%s\",", "my_search_analyzer");
         searchFieldPart       = "\"fields\":[ \"product_name^5\", \"brand_name^1\", \"keyword^5\" ]}},";
         fromSizePart          = String.format("\"from\" : %s,\"size\" : %s,", rp.getFrom(), rp.getSize());
+        if (rp.getCp().length()>0) {
+            filterPart = String.format("\"filter\" : {\"term\" : {\"cp\":\"%s\"}},", rp.getCp());
+        }
         if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
 //            String sortPart = "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}],";
             sortPart = String.format("\"sort\" : [{\"%s\" : \"%s\"}],",rp.getSortField(), rp.getSortOption());
@@ -143,11 +147,14 @@ public class QueryProcessor {
         StringBuilder sb = new StringBuilder(urlPart);
         sb.append(URLEncoder.encode(queryPart, "UTF-8"));
         sb.append(URLEncoder.encode(typePart, "UTF-8"));
-        sb.append(URLEncoder.encode(matchThredshold, "UTF-8"));
+        sb.append(URLEncoder.encode(matchThreshold, "UTF-8"));
         sb.append(URLEncoder.encode(operatorPart, "UTF-8"));
         sb.append(URLEncoder.encode(searchAnalyzerPart, "UTF-8"));
         sb.append(URLEncoder.encode(searchFieldPart,"UTF-8"));
         sb.append(URLEncoder.encode(fromSizePart,"UTF-8"));
+        if (rp.getCp().length()>0) {
+            sb.append(URLEncoder.encode(filterPart, "UTF-8"));
+        }
         if (!rp.getSortField().isEmpty() && !rp.getSortOption().isEmpty()) {
             sb.append(URLEncoder.encode(sortPart,"UTF-8"));
         }
@@ -168,94 +175,190 @@ public class QueryProcessor {
 
 
         if (rp.getSortField().length()>0 && "asc".equals(rp.getSortOption())) {
-            cate1Query = "{" +
-                    "\"query\":{" +
-                    "\"bool\":{" +
-                    "\"must\":[" +
-                    "{\"match\":{\"cate1\":\"%s\"}}" +
-                    "]" +
-                    "}" +
-                    "}," +
-                    "\"from\":%s," +
-                    "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
-                    "\"size\":%s" +
-                    "}";
+            if (rp.getCp().length()>0) {
+                cate1Query = "{" +
+                        "\"query\":{" +
+                        "\"bool\":{" +
+                        "\"must\":[" +
+                        "{\"match\":{\"cate1\":\"%s\"}}" +
+                        "]" +
+                        "}" +
+                        "}," +
+                        "\"from\":%s," +
+                        "\"filter\" : {\"term\" : {\"cp\":\""+rp.getCp()+"\"}}," +
+                        "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
+                        "\"size\":%s" +
+                        "}";
+            } else {
+                cate1Query = "{" +
+                        "\"query\":{" +
+                        "\"bool\":{" +
+                        "\"must\":[" +
+                        "{\"match\":{\"cate1\":\"%s\"}}" +
+                        "]" +
+                        "}" +
+                        "}," +
+                        "\"from\":%s," +
+                        "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
+                        "\"size\":%s" +
+                        "}";
+            }
         } else {
-            cate1Query = "{" +
-                    "\"query\":{" +
-                    "\"bool\":{" +
-                    "\"must\":[" +
-                    "{\"match\":{\"cate1\":\"%s\"}}" +
-                    "]" +
-                    "}" +
-                    "}," +
-                    "\"from\":%s," +
-//                    "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
-                    "\"size\":%s" +
-                    "}";
+            if (rp.getCp().length()>0) {
+                cate1Query = "{" +
+                        "\"query\":{" +
+                        "\"bool\":{" +
+                        "\"must\":[" +
+                        "{\"match\":{\"cate1\":\"%s\"}}" +
+                        "]" +
+                        "}" +
+                        "}," +
+                        "\"from\":%s," +
+                        "\"filter\" : {\"term\" : {\"cp\":\""+rp.getCp()+"\"}}," +
+                        "\"size\":%s" +
+                        "}";
+            } else {
+                cate1Query = "{" +
+                        "\"query\":{" +
+                        "\"bool\":{" +
+                        "\"must\":[" +
+                        "{\"match\":{\"cate1\":\"%s\"}}" +
+                        "]" +
+                        "}" +
+                        "}," +
+                        "\"from\":%s," +
+                        "\"size\":%s" +
+                        "}";
+            }
         }
 
 
         if (rp.getSortField().length()>0 && "asc".equals(rp.getSortOption())) {
-            cate2Query = "{" +
-                    "\"query\":{" +
-                    "\"bool\":{" +
-                    "\"must\": [" +
-                    "{\"match\":{\"cate1\":\"%s\"}}," +
-                    "{\"match\":{\"cate2\":\"%s\"}}" +
-                    "]" +
-                    "}" +
-                    "}," +
-                    "\"from\" : %s," +
-                    "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
-                    "\"size\" : %s" +
-                    "}";
+            if (rp.getCp().length()>0) {
+                cate2Query = "{" +
+                        "\"query\":{" +
+                        "\"bool\":{" +
+                        "\"must\": [" +
+                        "{\"match\":{\"cate1\":\"%s\"}}," +
+                        "{\"match\":{\"cate2\":\"%s\"}}" +
+                        "]" +
+                        "}" +
+                        "}," +
+                        "\"from\" : %s," +
+                        "\"filter\" : {\"term\" : {\"cp\":\""+rp.getCp()+"\"}}," +
+                        "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
+                        "\"size\" : %s" +
+                        "}";
+            } else {
+                cate2Query = "{" +
+                        "\"query\":{" +
+                        "\"bool\":{" +
+                        "\"must\": [" +
+                        "{\"match\":{\"cate1\":\"%s\"}}," +
+                        "{\"match\":{\"cate2\":\"%s\"}}" +
+                        "]" +
+                        "}" +
+                        "}," +
+                        "\"from\" : %s," +
+                        "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
+                        "\"size\" : %s" +
+                        "}";
+            }
         } else {
-            cate2Query = "{" +
-                    "\"query\":{" +
-                    "\"bool\":{" +
-                    "\"must\": [" +
-                    "{\"match\":{\"cate1\":\"%s\"}}," +
-                    "{\"match\":{\"cate2\":\"%s\"}}" +
-                    "]" +
-                    "}" +
-                    "}," +
-                    "\"from\" : %s," +
-//                    "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
-                    "\"size\" : %s" +
-                    "}";
+            if (rp.getCp().length()>0) {
+                cate2Query = "{" +
+                        "\"query\":{" +
+                        "\"bool\":{" +
+                        "\"must\": [" +
+                        "{\"match\":{\"cate1\":\"%s\"}}," +
+                        "{\"match\":{\"cate2\":\"%s\"}}" +
+                        "]" +
+                        "}" +
+                        "}," +
+                        "\"from\" : %s," +
+                        "\"filter\" : {\"term\" : {\"cp\":\""+rp.getCp()+"\"}}," +
+                        "\"size\" : %s" +
+                        "}";
+            } else {
+                cate2Query = "{" +
+                        "\"query\":{" +
+                        "\"bool\":{" +
+                        "\"must\": [" +
+                        "{\"match\":{\"cate1\":\"%s\"}}," +
+                        "{\"match\":{\"cate2\":\"%s\"}}" +
+                        "]" +
+                        "}" +
+                        "}," +
+                        "\"from\" : %s," +
+                        "\"size\" : %s" +
+                        "}";
+            }
         }
 
         if (rp.getSortField().length()>0 && "asc".equals(rp.getSortOption())) {
-            cate3Query = "{" +
-                    "\"query\":{" +
-                    "\"bool\":{" +
-                    "\"must\": [" +
-                    "{\"match\":{\"cate1\":\"%s\"}}," +
-                    "{\"match\":{\"cate2\":\"%s\"}}," +
-                    "{\"match\":{\"cate3\":\"%s\"}}" +
-                    "]" +
-                    "}" +
-                    "}," +
-                    "\"from\" : %s," +
-                    "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
-                    "\"size\" : %s" +
-                    "}";
+            if (rp.getCp().length()>0) {
+                cate3Query = "{" +
+                        "\"query\":{" +
+                        "\"bool\":{" +
+                        "\"must\": [" +
+                        "{\"match\":{\"cate1\":\"%s\"}}," +
+                        "{\"match\":{\"cate2\":\"%s\"}}," +
+                        "{\"match\":{\"cate3\":\"%s\"}}" +
+                        "]" +
+                        "}" +
+                        "}," +
+                        "\"from\" : %s," +
+                        "\"filter\" : {\"term\" : {\"cp\":\""+rp.getCp()+"\"}}," +
+                        "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
+                        "\"size\" : %s" +
+                        "}";
+            } else {
+                cate3Query = "{" +
+                        "\"query\":{" +
+                        "\"bool\":{" +
+                        "\"must\": [" +
+                        "{\"match\":{\"cate1\":\"%s\"}}," +
+                        "{\"match\":{\"cate2\":\"%s\"}}," +
+                        "{\"match\":{\"cate3\":\"%s\"}}" +
+                        "]" +
+                        "}" +
+                        "}," +
+                        "\"from\" : %s," +
+                        "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
+                        "\"size\" : %s" +
+                        "}";
+            }
         } else {
-            cate3Query = "{" +
-                    "\"query\":{" +
-                    "\"bool\":{" +
-                    "\"must\": [" +
-                    "{\"match\":{\"cate1\":\"%s\"}}," +
-                    "{\"match\":{\"cate2\":\"%s\"}}," +
-                    "{\"match\":{\"cate3\":\"%s\"}}" +
-                    "]" +
-                    "}" +
-                    "}," +
-                    "\"from\" : %s," +
-//                    "\"sort\" : [{\"sale_price\" : \"asc\",\"sale_per\" : \"desc\"}]," +
-                    "\"size\" : %s" +
-                    "}";
+            if (rp.getCp().length()>0) {
+                cate3Query = "{" +
+                        "\"query\":{" +
+                        "\"bool\":{" +
+                        "\"must\": [" +
+                        "{\"match\":{\"cate1\":\"%s\"}}," +
+                        "{\"match\":{\"cate2\":\"%s\"}}," +
+                        "{\"match\":{\"cate3\":\"%s\"}}" +
+                        "]" +
+                        "}" +
+                        "}," +
+                        "\"from\" : %s," +
+                        "\"filter\" : {\"term\" : {\"cp\":\""+rp.getCp()+"\"}}," +
+                        "\"size\" : %s" +
+                        "}";
+            } else {
+                cate3Query = "{" +
+                        "\"query\":{" +
+                        "\"bool\":{" +
+                        "\"must\": [" +
+                        "{\"match\":{\"cate1\":\"%s\"}}," +
+                        "{\"match\":{\"cate2\":\"%s\"}}," +
+                        "{\"match\":{\"cate3\":\"%s\"}}" +
+                        "]" +
+                        "}" +
+                        "}," +
+                        "\"from\" : %s," +
+                        "\"size\" : %s" +
+                        "}";
+            }
         }
 
 

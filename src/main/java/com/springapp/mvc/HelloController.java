@@ -123,8 +123,8 @@ public class HelloController {
         modelMap.addAttribute("cate1", rp.getCateName1());
         modelMap.addAttribute("cate2", rp.getCateName2());
         modelMap.addAttribute("cate3", rp.getCateName3());
+        modelMap.addAttribute("cp", rp.getCp());
 
-        logger.info(" ACTION : search!!");
         logger.info(sr.getSearchResultItems().toString());
 
         return "new1/pinter";
@@ -183,8 +183,8 @@ public class HelloController {
         modelMap.addAttribute("cate1", rp.getCateName1());
         modelMap.addAttribute("cate2", rp.getCateName2());
         modelMap.addAttribute("cate3", rp.getCateName3());
+        modelMap.addAttribute("cp", rp.getCp());
 
-        logger.info(" ACTION : pin_ajax!!");
         logger.info(sr.getSearchResultItems().toString());
 
         return "new1/pinter_ajax";
