@@ -217,11 +217,11 @@
           </a>
           <div class="caption">
               <c:choose>
-                <c:when test="${fn:length(list.productName) <= 26}">
+                <c:when test="${fn:length(list.productName) <= 20}">
                     <h5>${list.productName}</h5>
                 </c:when>
                 <c:otherwise>
-                    <h5>${fn:substring(list.productName,0,26)}...</h5>
+                    <h5>${fn:substring(list.productName,0,20)}...</h5>
                 </c:otherwise>
               </c:choose>
 
