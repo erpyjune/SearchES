@@ -28,7 +28,8 @@ public class QueryProcessor {
 
     private HashMap<String, Object> queryParamList;
 
-    private final String prefixUrl = "http://summarynode.cafe24.com:9200/shop/okmall/_search?pretty=true&";
+//    private final String prefixUrl = "http://summarynode.cafe24.com:9200/shop/okmall/_search?pretty=true&";
+    private final String prefixUrl = "http://www.kiwitomato.com:9200/shop/okmall/_search?pretty=true&";
 
 
     public String getFrom() {
@@ -240,7 +241,8 @@ public class QueryProcessor {
     /////////////////////////////////////////////////////////////////////////
     public void makeQueryParam(RequestParam rp) throws Exception {
         StringBuilder sb = new StringBuilder();
-        String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
+//        String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
+        String urlPart = "http://www.kiwitomato.com:9200/shop/okmall/_search?source=";
         if (rp.getCategorySearchType().equals("category")) {
 
             makeQueryParamBoolMustPart(rp);
@@ -288,7 +290,8 @@ public class QueryProcessor {
         String sortPart="";
         String highlightPart;
 
-        String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
+        String urlPart = "http://www.kiwitomato.com:9200/shop/okmall/_search?source=";
+//        String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
 //        String urlPart = "http://summarynode.com:9200/shop/okmall/_search?source=";
 
         queryPart             = String.format("{\"query\" : {\"multi_match\": {\"query\":\"%s\",", rp.getSearchQuery());
@@ -334,7 +337,8 @@ public class QueryProcessor {
     public void makeQueryJsonParamForCateSearch(RequestParam rp) throws Exception {
         String cate1Query="", cate2Query="", cate3Query="";
         String queryString="";
-        String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
+        String urlPart = "http://www.kiwitomato.com:9200/shop/okmall/_search?source=";
+//        String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
 //        String urlPart = "http://summarynode.com:9200/shop/okmall/_search?source=";
 
 
