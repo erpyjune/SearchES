@@ -82,14 +82,7 @@ public class HelloController {
         rp.paramParser(request);
 
         // make query string...
-        if (rp.getCategorySearchType().equals("category")) {
-            // category search.
-            qp.makeQueryJsonParamForCateSearch(rp);
-        }
-        else {
-            // normal search.
-            qp.makeQueryJsonParam(rp);
-        }
+        qp.makeQueryParam(rp);
 
         se.setCrawlUrl(rp.getSearchUrlParam());
         se.setCrawlEncoding("utf-8");
@@ -124,6 +117,8 @@ public class HelloController {
         modelMap.addAttribute("cate2", rp.getCateName2());
         modelMap.addAttribute("cate3", rp.getCateName3());
         modelMap.addAttribute("cp", rp.getCp());
+        modelMap.addAttribute("price_start", rp.getPriceStart());
+        modelMap.addAttribute("price_end", rp.getPriceEnd());
 
         logger.info(sr.getSearchResultItems().toString());
 
@@ -142,14 +137,7 @@ public class HelloController {
         rp.paramParser(request);
 
         // make query string...
-        if (rp.getCategorySearchType().equals("category")) {
-            // category search.
-            qp.makeQueryJsonParamForCateSearch(rp);
-        }
-        else {
-            // normal search.
-            qp.makeQueryJsonParam(rp);
-        }
+        qp.makeQueryParam(rp);
 
         se.setCrawlUrl(rp.getSearchUrlParam());
         se.setCrawlEncoding("utf-8");
@@ -184,6 +172,8 @@ public class HelloController {
         modelMap.addAttribute("cate2", rp.getCateName2());
         modelMap.addAttribute("cate3", rp.getCateName3());
         modelMap.addAttribute("cp", rp.getCp());
+        modelMap.addAttribute("price_start", rp.getPriceStart());
+        modelMap.addAttribute("price_end", rp.getPriceEnd());
 
         logger.info(sr.getSearchResultItems().toString());
 

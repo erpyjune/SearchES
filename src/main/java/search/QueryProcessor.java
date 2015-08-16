@@ -2,6 +2,7 @@ package search;
 
 import org.apache.log4j.Logger;
 
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.util.HashMap;
 
@@ -9,18 +10,22 @@ import java.util.HashMap;
  * Created by baeonejune on 15. 1. 13..
  */
 public class QueryProcessor {
-
     private static Logger logger = Logger.getLogger(QueryProcessor.class.getName());
-
     private String from="0";
     private String size="20";
     private String sortField=null;
     private String sortOption=null;
     private String operator="or";
-    private String type="best_fields";
+    private String type="cross_fields";
     private String originalQuery;
     private String searchQuery;
     private String searchQueryParam;
+
+    private String queryParamMultiMatchPart="";
+    private String queryParamBoolMustPart="";
+    private String queryParamFilterPart="";
+    private String queryParamEtcPart="";
+
     private HashMap<String, Object> queryParamList;
 
     private final String prefixUrl = "http://summarynode.cafe24.com:9200/shop/okmall/_search?pretty=true&";
@@ -74,6 +79,46 @@ public class QueryProcessor {
         this.queryParamList = queryParamList;
     }
 
+    public String getSortOption() {
+        return sortOption;
+    }
+
+    public void setSortOption(String sortOption) {
+        this.sortOption = sortOption;
+    }
+
+    public String getQueryParamMultiMatchPart() {
+        return queryParamMultiMatchPart;
+    }
+
+    public void setQueryParamMultiMatchPart(String queryParamMultiMatchPart) {
+        this.queryParamMultiMatchPart = queryParamMultiMatchPart;
+    }
+
+    public String getQueryParamBoolMustPart() {
+        return queryParamBoolMustPart;
+    }
+
+    public void setQueryParamBoolMustPart(String queryParamBoolMustPart) {
+        this.queryParamBoolMustPart = queryParamBoolMustPart;
+    }
+
+    public String getQueryParamFilterPart() {
+        return queryParamFilterPart;
+    }
+
+    public void setQueryParamFilterPart(String queryParamFilterPart) {
+        this.queryParamFilterPart = queryParamFilterPart;
+    }
+
+    public String getQueryParamEtcPart() {
+        return queryParamEtcPart;
+    }
+
+    public void setQueryParamEtcPart(String queryParamEtcPart) {
+        this.queryParamEtcPart = queryParamEtcPart;
+    }
+
     public String getPrefixUrl() {
         return prefixUrl;
     }
@@ -108,6 +153,125 @@ public class QueryProcessor {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////
+    public void makeQueryParamMultiMatchPart(RequestParam rp) throws Exception {
+        queryParamMultiMatchPart = "\"query\" : {\"multi_match\": {\"query\":\""+ rp.getSearchQuery()+"\", \"type\": \"cross_fields\",\"operator\" : \"and\","+
+                "\"analyzer\" : \"my_ngram_analyzer\",\"fields\": [\"product_name^3\", \"brand_name^1\", \"keyword^3\" ]}}";
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////
+    public void makeQueryParamEtcPart(RequestParam rp) throws Exception {
+        String templateSortPart = "\"sort\" : [{\"sale_price\" : \"%s\",\"sale_per\" : \"desc\"}]";
+        String templateFromSizePart = "\"from\" : %s,\"size\" : %s,\"highlight\": {\"fields\" : {\"product_name\" : {},\"brand_name\": {}}}";
+        StringBuilder sb = new StringBuilder();
+
+        // sort(yes)
+        if (rp.getSortField().length()>0 && rp.getSortOption().length()>0) {
+            queryParamEtcPart = sb.append(String.format(templateSortPart, rp.getSortOption())).
+                    append(",").
+                    append(String.format(templateFromSizePart, rp.getFrom(), rp.getSize())).toString();
+        }
+        // sort(no)
+        else {
+            queryParamEtcPart = String.format(templateFromSizePart, rp.getFrom(), rp.getSize());
+        }
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////
+    public void makeQueryParamBoolMustPart(RequestParam rp) throws Exception {
+        String templateStart = "\"query\" : {\"bool\" : { \"must\" : [";
+        String templateBoolQueryPart = "{\"match\" : {\"%s\":\"%s\"}}";
+        String templateEnd = "]}}";
+        StringBuilder sb = new StringBuilder(templateStart);
+
+        if (rp.getCateName1().length()>0 && rp.getCateName2().length()>0 && rp.getCateName3().length()>0) {
+            sb.append(String.format(templateBoolQueryPart,"cate1", rp.getCateName1())).
+                    append(",").
+                    append(String.format(templateBoolQueryPart, "cate2", rp.getCateName2())).
+                    append(",").
+                    append(String.format(templateBoolQueryPart, "cate3", rp.getCateName3())).
+                    append(templateEnd);
+        }
+        else if (rp.getCateName1().length()>0 && rp.getCateName2().length()>0 && rp.getCateName3().length()==0) {
+            sb.append(String.format(templateBoolQueryPart, "cate1", rp.getCateName1())).
+                    append(",").
+                    append(String.format(templateBoolQueryPart, "cate2", rp.getCateName2())).
+                    append(templateEnd);
+        }
+        else if (rp.getCateName1().length()>0 && rp.getCateName2().length()==0 && rp.getCateName3().length()==0) {
+            sb.append(String.format(templateBoolQueryPart,"cate1", rp.getCateName1())).
+                    append(templateEnd);
+        }
+
+        queryParamBoolMustPart = sb.toString();
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////
+    public void makeQueryParamFilterPart(RequestParam rp) throws Exception {
+        String templateStart      = "\"filter\" : { \"and\" : [";
+        String templatePriceRange = "{\"range\" : {\"sale_price\" : {\"gte\" : %s,\"lte\" : %s}}}";
+        String templateCategory   = "{\"term\" : {\"cp\":\"%s\"}}";
+        String templateEnd        = "]}";
+        StringBuilder sb = new StringBuilder(templateStart);
+
+        // cp(yes)
+        if (rp.getCp().length() > 0) {
+            sb.append(String.format(templateCategory, rp.getCp())).
+                    append(",").
+                    append(String.format(templatePriceRange, rp.getPriceStart(), rp.getPriceEnd())).
+                    append(templateEnd);
+        }
+        // cp(no)
+        else {
+            sb.append(String.format(templatePriceRange,rp.getPriceStart(), rp.getPriceEnd())).
+                    append(templateEnd);
+        }
+
+        queryParamFilterPart = sb.toString();
+    }
+
+
+    /////////////////////////////////////////////////////////////////////////
+    public void makeQueryParam(RequestParam rp) throws Exception {
+        StringBuilder sb = new StringBuilder();
+        String urlPart = "http://summarynode.cafe24.com:9200/shop/okmall/_search?source=";
+        if (rp.getCategorySearchType().equals("category")) {
+
+            makeQueryParamBoolMustPart(rp);
+            makeQueryParamFilterPart(rp);
+            makeQueryParamEtcPart(rp);
+
+            sb.append("{").
+                    append(queryParamBoolMustPart).
+                    append(",").
+                    append(queryParamFilterPart).
+                    append(",").
+                    append(queryParamEtcPart).
+                    append("}");
+        }
+        else {
+
+            makeQueryParamMultiMatchPart(rp);
+            makeQueryParamFilterPart(rp);
+            makeQueryParamEtcPart(rp);
+
+            sb.append("{").
+                    append(queryParamMultiMatchPart).
+                    append(",").
+                    append(queryParamFilterPart).
+                    append(",").
+                    append(queryParamEtcPart).
+                    append("}");
+        }
+
+        logger.info("QueryParam : " + urlPart + sb.toString());
+        rp.setSearchUrlParam(urlPart + URLEncoder.encode(sb.toString(), "UTF-8"));
     }
 
 

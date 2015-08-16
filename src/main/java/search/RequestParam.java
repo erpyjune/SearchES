@@ -1,5 +1,6 @@
 package search;
 
+import lib.SUtils;
 import org.apache.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,6 +26,8 @@ public class RequestParam {
     private String cateName1="";
     private String cateName2="";
     private String cateName3="";
+    private String priceStart="";
+    private String priceEnd="";
     private HashMap<String, Object> queryParamList;
     private static final String prefixUrl = "http://summarynode.cafe24.com:9200/shop/okmall/_search?pretty=true&";
 
@@ -140,6 +143,22 @@ public class RequestParam {
         this.cateName3 = cateName3;
     }
 
+    public String getPriceStart() {
+        return priceStart;
+    }
+
+    public void setPriceStart(String priceStart) {
+        this.priceStart = priceStart;
+    }
+
+    public String getPriceEnd() {
+        return priceEnd;
+    }
+
+    public void setPriceEnd(String priceEnd) {
+        this.priceEnd = priceEnd;
+    }
+
     public HashMap<String, Object> getQueryParamList() {
         return queryParamList;
     }
@@ -172,19 +191,21 @@ public class RequestParam {
         from = request.getParameter("from");
         if (from==null) from = "0";
 
-        String sss = request.getQueryString();
-        size = request.getParameter("size");
-        cp = request.getParameter("cp");
-        sortField = request.getParameter("sort_field");
-        sortOption = request.getParameter("sort_option");
-        operator = request.getParameter("operator");
-        searchType = request.getParameter("search_type");
+        String sss  = request.getQueryString();
+        size        = request.getParameter("size");
+        cp          = request.getParameter("cp");
+        sortField   = request.getParameter("sort_field");
+        sortOption  = request.getParameter("sort_option");
+        operator    = request.getParameter("operator");
+        searchType  = request.getParameter("search_type");
         displayType = request.getParameter("display_type");
         categorySearchType = request.getParameter("category_search_type");
-        cateName1 = request.getParameter("cate1");
-        cateName2 = request.getParameter("cate2");
-        cateName3 = request.getParameter("cate3");
-        String q = request.getParameter("query");
+        cateName1   = request.getParameter("cate1");
+        cateName2   = request.getParameter("cate2");
+        cateName3   = request.getParameter("cate3");
+        priceStart  = request.getParameter("price_start");
+        priceEnd    = request.getParameter("price_end");
+        String q    = request.getParameter("query");
         if (q!=null) {
 //            originalQuery = new String(q.getBytes("ISO-8859-1"),"UTF-8");
             originalQuery = q;
@@ -201,6 +222,8 @@ public class RequestParam {
         logger.info(" cate1 : " + cateName1);
         logger.info(" cate2 : " + cateName2);
         logger.info(" cate3 : " + cateName3);
+        logger.info(" priceStart : " + priceStart);
+        logger.info(" priceEnd   : " + priceEnd);
         logger.info(" cp : " + cp);
         logger.info(" =================================================");
     }
@@ -291,6 +314,25 @@ public class RequestParam {
             } else if ("category".equals(categorySearchType)) {
                 // TODO :: cate1, cate2 파라메터에 대해서 valid check 필요.
             }
+        }
+
+        // price range search.
+        if (priceStart!=null) {
+            if (!SUtils.isIntegerParseInt(priceStart)) {
+                logger.error(" priceStart value is invalid (" + priceStart + ")");
+                priceStart = "1";
+            }
+        } else {
+            priceStart = "1";
+        }
+
+        if (priceEnd!=null) {
+            if (!SUtils.isIntegerParseInt(priceEnd)) {
+                logger.error(" priceEnd value is invalid (" + priceEnd + ")");
+                priceEnd = "199999999";
+            }
+        } else {
+            priceEnd = "199999999";
         }
     }
 }
