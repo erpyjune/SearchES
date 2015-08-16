@@ -8,7 +8,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Outdoors Search.</title>
+    <title>키위토마토 - 아웃도어 용품 검색</title>
 
     <link href="/SearchES/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="/SearchES/resources/bootstrap/css/1-col-portfolio.css" rel="stylesheet">
