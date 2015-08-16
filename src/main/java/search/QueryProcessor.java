@@ -160,7 +160,7 @@ public class QueryProcessor {
     /////////////////////////////////////////////////////////////////////////
     public void makeQueryParamMultiMatchPart(RequestParam rp) throws Exception {
         queryParamMultiMatchPart = "\"query\" : {\"multi_match\": {\"query\":\""+ rp.getSearchQuery()+"\", \"type\": \"cross_fields\",\"operator\" : \"and\","+
-                "\"analyzer\" : \"my_ngram_analyzer\",\"fields\": [\"product_name^3\", \"brand_name^1\", \"keyword^3\" ]}}";
+                "\"analyzer\" : \"my_search_analyzer\",\"fields\": [\"product_name^3\", \"brand_name^1\", \"keyword^3\" ]}}";
     }
 
 
