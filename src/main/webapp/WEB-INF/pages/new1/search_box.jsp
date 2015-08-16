@@ -15,6 +15,13 @@
         <input type="hidden" name="size" value="20">
         <input type="hidden" name="from" value="0">
         <input type="hidden" name="operator" value="and">
+        <input type="hidden" name="cate1" value="">
+        <input type="hidden" name="cate2" value="">
+        <input type="hidden" name="cate3" value="">
+        <input type="hidden" name="price_start" value="">
+        <input type="hidden" name="price_end" value="">
+        <input type="hidden" name="sort_option" value="">
+        <input type="hidden" name="sort_field" value="">
         <%--<input type="hidden" name="display_type" value="${displayType}">--%>
         <button type="submit" class="btn btn-default">Search</button>
           <!-- search result info -->
@@ -23,6 +30,7 @@
                   <h5> 검색결과 :  <span class="label label-default">${searchTotalCount}</span></h5>
               </div>
           </div>
+
           <!-- display method -->
           <div class="row">
               <div class="col-lg-12">
