@@ -13,7 +13,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="./search?query=텐트 타프 등산복 배낭 코펠&size=20&from=0&display_type=${displayType}&operator=or">Home</a>
+      <a class="navbar-brand" href="./search?query=등산 자켓&size=20&from=0&display_type=${displayType}&operator=or">Home</a>
     </div>
     <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
