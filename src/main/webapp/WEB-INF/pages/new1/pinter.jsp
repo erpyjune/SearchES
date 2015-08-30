@@ -63,7 +63,7 @@
             left: 0;
             height: 100%;
             width: 100%;
-            background: rgba(255, 255, 255, .8) url('http://summarynode.cafe24.com/SearchES/resources/images/loading34.gif') 50% 50% no-repeat;
+            background: rgba(255, 255, 255, .8) url('http://www.kiwitomato.com/SearchES/resources/images/loading34.gif') 50% 50% no-repeat;
         }
         /* When the body has the loading class, we turn
             the scrollbar off with overflow:hidden */
@@ -158,8 +158,8 @@
                 '&sort_field='+sort_field+'&category_search_type='+category_search_type+'&cate1='+cate1+
                 '&cate2='+cate2+'&cate3='+cate3+'&cp='+cp+'&price_start='+price_start+'&price_end='+price_end,
 //            url : "http://summarynode.cafe24.com/SearchES/pin_ajax?query="+query,
-            url : "http://www.kiwitomato.com/SearchES/pin_ajax?query="+query,
-//            url : "http://summarynode.com:8080/SearchES/pin_ajax?query="+query,
+//            url : "http://www.kiwitomato.com/SearchES/pin_ajax?query="+query,
+            url : "http://summarynode.com:8080/SearchES/pin_ajax?query="+query,
             success: function (data){
                 if(data=="false"){
                     alert("데이터를 로드 하지 못하였습니다.");

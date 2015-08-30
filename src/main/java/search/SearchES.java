@@ -237,10 +237,10 @@ public class SearchES {
             searchResultItems.add(searchResultItem);
             listCount++;
 
-//            System.out.println(source.get("dataid"));
-//            System.out.println(source.get("product_name"));
-//            System.out.println(source.get("url"));
-//            System.out.println("=========================================================");
+            System.out.println(source.get("dataid"));
+            System.out.println(source.get("product_name"));
+            System.out.println(source.get("url"));
+            System.out.println("=========================================================");
         }
 
         searchResultHeader.setListCount(listCount);
