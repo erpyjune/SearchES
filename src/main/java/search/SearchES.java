@@ -133,7 +133,6 @@ public class SearchES {
         reponseCode = closeableHttpResponse.getStatusLine().getStatusCode();
 
         try {
-//            HttpEntity httpEntity = closeableHttpResponse.getEntity();
             BufferedReader rd = new BufferedReader(
                     new InputStreamReader(closeableHttpResponse.getEntity().getContent(), crawlEncoding));
 
@@ -238,7 +237,7 @@ public class SearchES {
             listCount++;
 
             System.out.println(source.get("dataid"));
-            System.out.println(source.get("product_name"));
+            System.out.println(source.get("product_name").toString());
             System.out.println(source.get("url"));
             System.out.println("=========================================================");
         }

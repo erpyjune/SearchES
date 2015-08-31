@@ -9,15 +9,39 @@
 <div><strong> list  Count : $searchListCount</strong></div>
 
 #foreach ($list in $searchList)
-    <img src="${list.getThumbUrlBig()}" alt="${list.getProductName()}" onerror="this.src='http://summarynode.cafe24.com/SearchES/resources/images/no_detail_img.gif'"><br>
-    <h1><a href="${list.getContentUrl()}" target="_new">${list.getBrandName()} ${list.getProductName()}</a></h1><br>
+    <div>
+    <img src="${list.getThumbUrlBig()}" alt="${list.getProductName()}" onerror="this.src='http://summarynode.cafe24.com/SearchES/resources/images/no_detail_img.gif'" style="max-width: 100%; height: auto;"><br>
+    ${list.getCpName()}<br>
+    <a href="${list.getContentUrl()}" target="_new">${list.getBrandName()} ${list.getProductName()}</a><br>
     #if(${list.getOrgPrice()} != ${list.getSalePrice()})
         <p><del><small>${list.getOrgPrice()}</small></del> -> <span class="label label-success">${list.getSalePrice()}</span><br>
     #else
         <p><span class="label label-success">${list.getSalePrice()}</span><br>
     #end
-    ==========================================<br>
+    </div>
 #end
+
+
+#set ($currFrom="0")
+#if( $pageMap.currPageFrom != $currFrom)
+<form action="/SearchES/vm/search">
+    <input type="hidden" name="query" value="$query">
+    <input type="hidden" name="from" value="$pageMap.prevPageFrom">
+    <input type="hidden" name="size" value="$pageMap.prevPageSize">
+    <input type="submit" value="이전">
+</form>
+#end
+
+#set ($nextPageYes="1")
+#if($pageMap.nextPageYN == $nextPageYes)
+<form action="/SearchES/vm/search">
+    <input type="hidden" name="query" value="$query">
+    <input type="hidden" name="from" value="$pageMap.nextPageFrom">
+    <input type="hidden" name="size" value="$pageMap.nextPageSize">
+    <input type="submit" value="더보기">
+</form>
+#end
+
 
 </body>
 </html>
